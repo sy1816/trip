@@ -9,8 +9,8 @@
 
 <meta name="description" content="">
 <meta name="author" content="">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b4b48a5fa7871dcc84060cbeebe39f18&libraries=services,cluster,drawing"></script> <!-- 장소검색,주소-좌표변환/마커클러스터링용/그리기용 -->
 <title>TGF - Tour Guide For</title>
-
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -37,7 +37,103 @@
 				</div>
 				<div class="card-body">
 
-				<!--  여기서부터 작업하면 되요! -->
+				<!--  추천여행지 map ! -->
+			<div id="map" style="width:100%;height:400px;"></div>
+			<p>
+			<button onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button> 
+			<button onclick="setOverlayMapTypeId('roadview')">로드뷰 도로정보 보기</button> 
+			<button onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
+			<button onclick="setOverlayMapTypeId('use_district')">지적편집도 보기</button>
+			</p>
+			<script>
+				var container = document.getElementById('map');
+				var options = {
+					center: new daum.maps.LatLng(33.450701, 126.570667),
+					level: 14
+				};
+
+				var map = new daum.maps.Map(container, options);
+				
+				var currentTypeId;
+
+				// 1.버튼클릭시 지도선택 함수
+				function setOverlayMapTypeId(maptype) {
+				    var changeMaptype;
+				    
+				    if (maptype === 'traffic') {            
+				        changeMaptype = daum.maps.MapTypeId.TRAFFIC;     
+				        
+				    } else if (maptype === 'roadview') {        
+				         changeMaptype = daum.maps.MapTypeId.ROADVIEW;    
+
+				    } else if (maptype === 'terrain') {
+				         changeMaptype = daum.maps.MapTypeId.TERRAIN;    
+
+				    } else if (maptype === 'use_district') {
+				     	 changeMaptype = daum.maps.MapTypeId.USE_DISTRICT;           
+				    }
+				    
+				    // 이미 등록된 지도 타입 제거
+				    if (currentTypeId) {
+				        map.removeOverlayMapTypeId(currentTypeId);    
+				    }
+				    
+				    // 선택한 지도정보 추가
+				    map.addOverlayMapTypeId(changeMaptype);
+				    
+				    // 갱신
+				    currentTypeId = changeMaptype;        
+				}
+				
+				
+				//2.지도위에 마커 표시
+								
+				var name = "경복궁"
+				var addr = "서울 종로구 세종로 1-91"
+				//for 다중마커
+				var positions = [
+					{	title: '명동',
+						addr : '서울 중구 명동'
+					},
+					{	title: '해운대',
+						addr : '부산 해운대구'						
+					},
+					{	title: '테디베어 박물관',
+						addr : '제주 서귀포시 중문관광로110번길 31'
+							
+					}
+				]
+				var geocoder = new daum.maps.services.Geocoder();
+				var coords
+				
+				geocoder.addressSearch(addr,function(result,status){
+					if(status == daum.maps.services.Status.OK){
+						coords = new daum.maps.LatLng(result[0].y,result[0].x);
+						//마커표시
+						var marker = new daum.maps.Marker({
+							map : map, 
+							position: coords
+						});
+						
+						//마커+설명표시
+						var infowindow = new daum.maps.InfoWindow({
+							content : '<div style="width:150px;text-align:center;padding:6px 0;"> '+name+' </div>'
+						});
+						infowindow.open(map,marker);
+						
+						//마커제거
+						//marker.setMap(null);
+						
+						//지도를 이 주소위치로 이동!
+						//map.setCenter(coords);
+					}
+					else{
+						console.log("잘못된주소")
+					}
+				});
+				
+				
+			</script>
 
 
 					</div>
