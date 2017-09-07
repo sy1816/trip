@@ -30,131 +30,179 @@
 
 		<div class="container-fluid">
 
+			<!-- Navigation -->
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+				id="mainNav">
+				<a class="navbar-brand" href="#">Tour Guide For</a>
+				<button class="navbar-toggler navbar-toggler-right" type="button"
+					data-toggle="collapse" data-target="#navbarResponsive"
+					aria-controls="navbarResponsive" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav navbar-sidenav">
+						<li class="nav-item" data-toggle="tooltip"
+							data-placement="right" title="Home""><a class="nav-link"
+							href="#"> <i class="fa fa-fw fa-dashboard"></i> <span
+								class="nav-link-text"> Home</span>
+						</a></li>
+						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+							title="Tables"><a class="nav-link" href="#"> <i
+								class="fa fa-fw fa-table"></i> <span class="nav-link-text">
+									Search Tour Spot</span>
+						</a></li>
+
+						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+							title="Charts"><a
+							class="nav-link nav-link-collapse collapsed"
+							data-toggle="collapse" href="#collapseComponents"> <i
+								class="fa fa-fw fa-area-chart"></i> <span class="nav-link-text">
+									Rank</span>
+						</a>
+							<ul class="sidenav-second-level collapse" id="collapseComponents">
+								<li><a href="#">Monthly Rank</a></li>
+								<li><a href="#">Job Rank</a></li>
+								<li><a href="#">Nation Rank</a></li>
+							</ul></li>
+
+
+						<!--    active -->
+
+						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+							title="Recommend System"><a
+							class="nav-link nav-link-collapse collapsed"
+							data-toggle="collapse" href="#collapseMulti"> <i
+								class="fa fa-fw fa-sitemap"></i> <span class="nav-link-text">
+									Recommend System </span>
+						</a>
+							<ul class="sidenav-second-level collapse" id="collapseMulti">
+								<li class = "active"><a href="#">Personality</a></li>
+								<li><a href="#">Basket Recommend</a></li>
+							</ul></li>
+
+					</ul>
+					<ul class="navbar-nav sidenav-toggler">
+						<li class="nav-item"><a class="nav-link text-center"
+							id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+
 			<!-- Example Tables Card -->
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i> Tour Recommend Service - User Personality
+					<i class="fa fa-table"></i> Tour Recommend Service - User
+					Personality
 				</div>
 				<div class="card-body">
 
-				<form>
-					<div class="form-group">
-						<label for="gender">Gender : </label> 
-							<select class="form-control " id="gender">
-							<option value = "-1">No selected (선택되지 않음)</option>
-							<option value = "1">Male (남자)</option>
-							<option value = "2">Female (여자)</option>
-						</select>
-						<br>
+					<!-- 여기서 입력 받습니다. -->
+					<form action="/tourS/score_recommend_result.html" method="get">
+						<div class="form-group">
+							<label for="gender">Gender : </label> <select
+								class="form-control " id="gender" name="gender">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1">Male (남자)</option>
+								<option value="2">Female (여자)</option>
+							</select> <br> <label for="age">Age : </label> <select
+								class="form-control  " id="age" name="age">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="0">10s (10대)</option>
+								<option value="1">20s (20대)</option>
+								<option value="2">30s (30대)</option>
+								<option value="3">40s (40대)</option>
+								<option value="4">50s (50대)</option>
+								<option value="5">60s more (60대 이상)</option>
+							</select> <br> <label for="nation">Nation : </label> <select
+								class="form-control  " id="nation" name="nation">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Japan (일본)</option>
+								<option value="2">China (중국)</option>
+								<option value="3">Hongkong (홍콩)</option>
+								<option value="4">Singapore (싱가포르)</option>
+								<option value="5">Taiwan (대만)</option>
+								<option value="6">Thailand (태국)</option>
+								<option value="7">Malaysia (말레이시아)</option>
+								<option value="8">Australia (호주)</option>
+								<option value="9">U.S.A (미국)</option>
+								<option value="10">Canada (캐나다)</option>
+								<option value="11">U.K (영국)</option>
+								<option value="12">Germany (독일)</option>
+								<option value="13">France (프랑스)</option>
+								<option value="14">Russia (러시아)</option>
+								<option value="15">the Mideast (중동)</option>
+								<option value="16">India (인도)</option>
+								<option value="97">the Others (기타)</option>
+							</select> <br> <label for="job">Job : </label> <select
+								class="form-control select-lg" id="job" name="job">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Civil servant / Soldier (공무원 / 군인)</option>
+								<option value="2">Businessman / Manager (기업인 / 경영직)</option>
+								<option value="3">Office job / Technical post (사무 / 기술직)</option>
+								<option value="4">Sales / Service (판매 / 서비스직)</option>
+								<option value="5">Specialized job (전문직)</option>
+								<option value="6">Production employee / Simple labor (생산, 기능, 노무직)</option>
+								<option value="7">Owner-operator (자영업자)</option>
+								<option value="8">Student (학생)</option>
+								<option value="9">Housewife (주부)</option>
+								<option value="10">Retiree  (은퇴자)</option>
+								<option value="11">Inoccupation (무직)</option>
+								<option value="12">the Others (기타)</option>
+							</select> <br> <label for="with">With : </label> <select
+								class="form-control  " id="with" name="with">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Solo (혼자)</option>
+								<option value="2">Family / Relative (가족 / 친척)</option>
+								<option value="3">Friend / Couple (친구 / 연인)</option>
+								<option value="4">Colleague (직장동료)</option>
+								<option value="5">the Others (기타)</option>
+							</select> <br> <label for="purpose">Purpose of visit : </label> <select
+								class="form-control  " id="purpose" name="purpose">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Leisure, Amusement & Individual vacation (여가, 위락, 개별휴가)</option>
+								<option value="2">Beauty, Health & Therapy (뷰티, 건강 및 치료)</option>
+								<option value="3">Religion and pilgrimage (종교 및 순례)</option>
+								<option value="4">Shopping (쇼핑)</option>
+								<option value="5">Visit friends and relatives (친구, 친지 방문)</option>
+								<option value="6">Business or professional activity  (사업 또는 전문 활동)</option>
+								<option value="7">Education (교육)</option>
+							</select> <br>
 
-						<label for="age">Age : </label> 
-							<select class="form-control  " id="age">
-							<option value = "-1">No selected (선택되지 않음)</option>
-							<option value = "0">10s (10대)</option>
-							<option value = "1">20s (20대)</option>
-							<option value = "2">30s (30대)</option>
-							<option value = "3">40s (40대)</option>
-							<option value = "4">50s (50대)</option>
-							<option value = "5">60s more (60대 이상)</option>
-						</select>
-						<br>
-
-						<label for="nation">Nation : </label> 
-							<select class="form-control  " id="nation">
-							<option value = "-1">No selected (선택되지 않음)</option>
-							<option value = "1"">Japan (일본)</option>
-							<option value = "2">China (중국)</option>
-							<option value = "3">Hongkong (홍콩)</option>
-							<option value = "4">Singapore (싱가포르)</option>
-							<option value = "5">Taiwan (대만)</option>
-							<option value = "6">Thailand (태국)</option>
-							<option value = "7">Malaysia (말레이시아)</option>
-							<option value = "8">Australia (호주)</option>
-							<option value = "9">U.S.A (미국)</option>
-							<option value = "10">Canada (캐나다)</option>
-							<option value = "11">U.K (영국)</option>
-							<option value = "12">Germany (독일)</option>
-							<option value = "13">France (프랑스)</option>
-							<option value = "14">Russia (러시아)</option>
-							<option value = "15">the Mideast (중동)</option>
-							<option value = "16">India (인도)</option>
-							<option value = "97">the Others (기타)</option>
-						</select>
-						<br>
-
-						<label for="job">Job : </label> 
-							<select class="form-control select-lg" id="job">
-							<option value = "-1">No selected (선택되지 않음)</option>
-							<option value = "1"">Civil servant / Soldier (공무원 / 군인)</option>
-							<option value = "2">Businessman / Manager (기업인 / 경영직)</option>
-							<option value = "3">Office job / Technical post (사무 / 기술직)</option>
-							<option value = "4">Sales / Service (판매 / 서비스직)</option>
-							<option value = "5">Specialized job (전문직)</option>
-							<option value = "6">Production employee / Simple labor (생산, 기능, 노무직)</option>
-							<option value = "7">Owner-operator (자영업자)</option>
-							<option value = "8">Student (학생)</option>
-							<option value = "9">Housewife (주부)</option>
-							<option value = "10">Retiree  (은퇴자)</option>
-							<option value = "11">Inoccupation (무직)</option>
-							<option value = "12">the Others (기타)</option>
-						</select>
-						<br>
-
-						<label for="with">With : </label> 
-							<select class="form-control  " id="with">
-							<option value = "-1">No selected (선택되지 않음)</option>
-							<option value = "1"">Solo (혼자)</option>
-							<option value = "2">Family / Relative (가족 / 친척)</option>
-							<option value = "3">Friend / Couple (친구 / 연인)</option>
-							<option value = "4">Colleague (직장동료)</option>
-							<option value = "5">the Others (기타)</option>
-						</select>
-						<br>
-
-						<label for="purpose">Purpose of visit : </label> 
-							<select class="form-control  " id="purpose">
-							<option value = "-1">No selected (선택되지 않음)</option>
-							<option value = "1"">Leisure, Amusement & Individual vacation (여가, 위락, 개별휴가)</option>
-							<option value = "2">Beauty, Health & Therapy (뷰티, 건강 및 치료)</option>
-							<option value = "3">Friend / Couple (종교 및 순례)</option>
-							<option value = "4">Colleague (쇼핑)</option>
-							<option value = "5">the Others (친구, 친지 방문)</option>
-							<option value = "6">Business /  (사업 또는 전문 활동)</option>
-							<option value = "7">Education (교육)</option>
-						</select>
-						<br>
+							<button class="btn btn-default btn-block" type="submit">Recommend</button>
+					</form>
 
 
-				</form>
-
-
-					</div>
-					<div class="card-footer small text-muted">You must have at least one choice <br>선택은 1가지 이상 하셔야 합니다</div>
 				</div>
-
+				<div class="card-footer small text-muted">
+					You must have at least one choice <br>선택은 1가지 이상 하셔야 합니다
+				</div>
 			</div>
-			<!-- /.container-fluid -->
 
 		</div>
-		<!-- /.content-wrapper -->
+		<!-- /.container-fluid -->
 
-		<!-- Scroll to Top Button -->
-		<a class="scroll-to-top rounded" href="#page-top"> <i
-			class="fa fa-angle-up"></i>
-		</a>
+	</div>
+	<!-- /.content-wrapper -->
 
-		<!-- Bootstrap core JavaScript -->
-		<script src="js/jquery.js"></script>
+	<!-- Scroll to Top Button -->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fa fa-angle-up"></i>
+	</a>
 
-		<script src="js/popper.js"></script>
-		<script src="js/bootstrap.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="js/jquery.js"></script>
 
-		<!-- Plugin JavaScript -->
-		<script src="js/jquery.easing.js"></script>
-		<script src="js/jquery.dataTables.js"></script>
-		<script src="js/dataTables.bootstrap4.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.js"></script>
 
-		<!-- Custom scripts for this template -->
-		<script src="js/sb-admin.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="js/jquery.easing.js"></script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/dataTables.bootstrap4.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/sb-admin.js"></script>
 </body>
 </html>
