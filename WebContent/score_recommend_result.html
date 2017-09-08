@@ -98,43 +98,48 @@
 						var positions = [ {
 							title : '명동',
 							addr : '서울 중구 명동'
-							latlng : 
+
 						}, {
 							title : '해운대',
 							addr : '부산 해운대구'
-							latlng : 
+
 						}, {
 							title : '테디베어 박물관',
 							addr : '제주 서귀포시 중문관광로110번길 31'
-							latlng : 
 
 						} ];
 						var geocoder = new daum.maps.services.Geocoder();
-						var coords
+						//var coords
 						var markerset = [];
 						var infowindowset = [];
-						var temp_x = [], temp_y = [];
+						var coords;
 						var index = 0;
 
-						var callback = function(result, status) {
-						    if (status === daum.maps.services.Status.OK) {
-						    	temp_x.push(result[0].x);
-						    	temp_y.push(result[0].y);
-						    	addMarker()
-						    }
-						};
-						
-						
-
-						
 						for (i = 0; i < positions.length; i++) {
-							temp = geocoder.addressSearch(positions[i].addr, callback, )
-						console.log(temp_x[0])
-						console.log(temp_y[0])
-//							addMarker(callback[0].address_name, )
-							console.log(positions[i].title)
 							
-							addwindow(positions[i].title)
+								geocoder.addressSearch(
+												positions[i].addr,
+												function(result, status) {
+													if (status === daum.maps.services.Status.OK) {
+														coords = new daum.maps.LatLng(
+																result[0].y,
+																result[0].x);
+														
+														var marker = new daum.maps.Marker(
+																{
+																	map : map,
+																	position : coords
+
+																});
+														console.log(coords)
+													}
+												
+
+													//addwindow(positions[i].title)
+												});
+							
+							
+							
 						}
 
 						//markerset에 marker추가
