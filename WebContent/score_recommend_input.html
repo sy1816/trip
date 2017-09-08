@@ -99,7 +99,7 @@
 				<div class="card-body">
 
 					<!-- 여기서 입력 받습니다. -->
-					<form action="/tourS/score_temp.jsp" method="get">
+					<form action="/tourS/score_recommend_result.html" method="get">
 						<div class="form-group">
 							<label for="gender">Gender : </label> <select
 								class="form-control " id="gender" name="gender">
@@ -168,7 +168,23 @@
 								<option value="5">Visit friends and relatives (친구, 친지 방문)</option>
 								<option value="6">Business or professional activity  (사업 또는 전문 활동)</option>
 								<option value="7">Education (교육)</option>
+							</select> <br> <select
+								class="form-control  " id="month" name="month">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1">January (1월)</option>
+								<option value="2">Febuary (2월)</option>
+								<option value="3">March (3월)</option>
+								<option value="4">April (4월)</option>
+								<option value="5">May (5월)</option>
+								<option value="6">June (6월)</option>
+								<option value="7">July (7월)</option>
+								<option value="8">August (8월)</option>
+								<option value="9">September (9월)</option>
+								<option value="10">October (10월)</option>
+								<option value="11">November (11월)</option>
+								<option value="12">December (12월)</option>
 							</select> <br>
+
 
 							<button class="btn btn-default btn-block" type="submit">Recommend</button>
 					</form>

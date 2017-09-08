@@ -10,23 +10,14 @@
 	String with = request.getParameter("with");
 	String purpose = request.getParameter("purpose");
 	String month = request.getParameter("month");
+	String json;
 	
 	recommendDAO rDAO = new recommendDAO();
 
 	ArrayList<tourVO> tour = new ArrayList<tourVO>();
 	tour = rDAO.recommendService(gender, age, nation, job, with, purpose, month);
-	
+	json = Converter.convertToJson(tour);
+
 %>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>TGF - Tour Guide For</title>
-</head>
-<body>
-<%=tour %>
-<%=gender %>
-</body>
-</html>
+<%=json %>

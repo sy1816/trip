@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -53,14 +54,18 @@ public class recommendDAO {
 			
 			for(int i=0; i<135; i++) {
 				rs.next();
-				System.out.println(rs.getDouble(name));
 				tour.get(i).setQuotient(tour.get(i).getQuotient() + rs.getDouble(name));
 //				System.out.println(tour.get(i).getQuotient());
 			}
-			
-			
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				pstm.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -68,9 +73,7 @@ public class recommendDAO {
 		ArrayList<tourVO> tour = new ArrayList<tourVO>();
 		ArrayList<tourVO> recommend_tour = new ArrayList<tourVO>();
 		Connection conn = null;
-		PreparedStatement pstm = null;
-		ResultSet rs = null;
-		String name;
+		String name = null;
 
 		try {
 			conn = getConnection();
@@ -158,8 +161,6 @@ public class recommendDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				pstm.close();
-				rs.close();
 				conn.close();
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -177,7 +178,7 @@ public class recommendDAO {
 		try {
 			conn = getConnection();
 			InitialTour(conn, tour);
-			recommendService("1", "1", "-1", "-1", "-1", "-1", "-1");
+			recommendService("1", "3", "-1", "-1", "-1", "1", "1");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
