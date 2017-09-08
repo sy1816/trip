@@ -254,8 +254,9 @@
 						$.ajax({
 							url : "score_temp.jsp",
 							type : "GET",
-							data : {gender_, age_, nation_, job_, with_, purpose_, month_},
+							data : {gender : gender_, age : age_, nation : nation_, job : job_, with : with_, purpose : purpose_, month : month_},
 							success : function(data) {
+								console.log("성공")
 								json = JSON.parse(data)
 								console.log(data)
 							}
