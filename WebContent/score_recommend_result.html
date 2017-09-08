@@ -46,7 +46,65 @@
 	<div class="content-wrapper py-3">
 
 		<div class="container-fluid">
+			<!-- Navigation -->
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+				id="mainNav">
+				<a class="navbar-brand" href="#">Tour Guide For</a>
+				<button class="navbar-toggler navbar-toggler-right" type="button"
+					data-toggle="collapse" data-target="#navbarResponsive"
+					aria-controls="navbarResponsive" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav navbar-sidenav">
+						<li class="nav-item" data-toggle="tooltip"
+							data-placement="right" title="Home""><a class="nav-link"
+							href="home.html"> <i class="fa fa-fw fa-dashboard"></i> <span
+								class="nav-link-text"> Home</span>
+						</a></li>
+						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+							title="Tables"><a class="nav-link" href="#"> <i
+								class="fa fa-fw fa-table"></i> <span class="nav-link-text">
+									Search Tour Spot</span>
+						</a></li>
 
+						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+							title="Charts"><a
+							class="nav-link nav-link-collapse collapsed"
+							data-toggle="collapse" href="#collapseComponents"> <i
+								class="fa fa-fw fa-area-chart"></i> <span class="nav-link-text">
+									Rank</span>
+						</a>
+							<ul class="sidenav-second-level collapse" id="collapseComponents">
+								<li><a href="#">Monthly Rank</a></li>
+								<li><a href="#">Job Rank</a></li>
+								<li><a href="#">Nation Rank</a></li>
+							</ul></li>
+
+									<!--    active -->
+
+						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+							title="Recommend System"><a
+							class="nav-link nav-link-collapse collapsed"
+							data-toggle="collapse" href="#collapseMulti"> <i
+								class="fa fa-fw fa-sitemap"></i> <span class="nav-link-text">
+									Recommend System </span>
+						</a>
+							<ul class="sidenav-second-level collapse" id="collapseMulti">
+								<li class = "active"><a href="score_recommend_input.html">Personality</a></li>
+								<li><a href="#">Basket Recommend</a></li>
+							</ul></li>
+
+					</ul>
+					<ul class="navbar-nav sidenav-toggler">
+						<li class="nav-item"><a class="nav-link text-center"
+							id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+			
 			<!-- Example Tables Card -->
 			<div class="card mb-3">
 				<div class="card-header">
@@ -58,17 +116,17 @@
 					<!--  추천여행지 map ! -->
 					<div id="map" style="width: 100%; height: 400px;"></div>
 					<p>
-						<button onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
-						<button onclick="setOverlayMapTypeId('roadview')">로드뷰
+						<button  onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
+						<button  onclick="setOverlayMapTypeId('roadview')">로드뷰
 							도로정보 보기</button>
-						<button onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
-						<button onclick="setOverlayMapTypeId('use_district')">지적편집도
+						<button  onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
+						<button  onclick="setOverlayMapTypeId('use_district')">지적편집도
 							보기</button>
 					</p>
 					<script>
 						var container = document.getElementById('map');
 						var options = {
-							center : new daum.maps.LatLng(38.450701, 126.570667),
+							center : new daum.maps.LatLng(36.450701, 126.570667),
 							level : 14
 						};
 
@@ -600,7 +658,7 @@
 
 				</div>
 				<div class="card-footer small text-muted">
-					You must have at least one choice <br>선택은 1가지 이상 하셔야 합니다
+					You can get information, when you hover over the pin<br> 핀 위에 마우스를 올리면 정보를 볼 수 있습니다. 
 				</div>
 			</div>
 
