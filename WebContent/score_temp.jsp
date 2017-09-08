@@ -3,19 +3,19 @@
 <%@ page import="java.util.*"%>
 <%@ page import="recommend.*"%>
 <%
-	int gender = Integer.valueOf(request.getParameter("gender"));
-	int age = Integer.valueOf(request.getParameter("age"));
-	int nation = Integer.valueOf(request.getParameter("nation"));
-	int job = Integer.valueOf(request.getParameter("job"));
-	int with = Integer.valueOf(request.getParameter("with"));
-	int purpose = Integer.valueOf(request.getParameter("purpose"));
-	int month = Integer.valueOf(request.getParameter("month"));
+	String gender = request.getParameter("gender");
+	String age = request.getParameter("age");
+	String nation = request.getParameter("nation");
+	String job = request.getParameter("job");
+	String with = request.getParameter("with");
+	String purpose = request.getParameter("purpose");
+	String month = request.getParameter("month");
 	
 	recommendDAO rDAO = new recommendDAO();
-	
+
 	ArrayList<tourVO> tour = new ArrayList<tourVO>();
 	tour = rDAO.recommendService(gender, age, nation, job, with, purpose, month);
-
+	
 %>
 
 
@@ -26,6 +26,7 @@
 <title>TGF - Tour Guide For</title>
 </head>
 <body>
-
+<%=tour %>
+<%=gender %>
 </body>
 </html>
