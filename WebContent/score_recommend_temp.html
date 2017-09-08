@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<meta name="description" content="">
+<meta name="author" content="">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b4b48a5fa7871dcc84060cbeebe39f18&libraries=services,cluster,drawing"></script>
+<!-- 장소검색,주소-좌표변환/마커클러스터링용/그리기용 -->
+<title>TGF - Tour Guide For</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+
+<!-- Plugin CSS -->
+<link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+<body class="fixed-nav" id="page-top">
+
+	<div class="content-wrapper py-3">
+
+		<div class="container-fluid">
+
+			<!-- Example Tables Card -->
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-table"></i> Tour Recommend Service - User
+					Personality
+				</div>
+				<div class="card-body">
+
+					<!--  추천여행지 map ! -->
+					<div id="map" style="width: 100%; height: 400px;"></div>
+					<p>
+						<button onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
+						<button onclick="setOverlayMapTypeId('roadview')">로드뷰
+							도로정보 보기</button>
+						<button onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
+						<button onclick="setOverlayMapTypeId('use_district')">지적편집도
+							보기</button>
+					</p>
+					<script>
+						var container = document.getElementById('map');
+						var options = {
+							center : new daum.maps.LatLng(33.450701, 126.570667),
+							level : 14
+						};
+
+						var map = new daum.maps.Map(container, options);
+
+						var currentTypeId;
+
+						// 1.버튼클릭시 지도선택 함수
+						function setOverlayMapTypeId(maptype) {
+							var changeMaptype;
+
+							if (maptype === 'traffic') {
+								changeMaptype = daum.maps.MapTypeId.TRAFFIC;
+
+							} else if (maptype === 'roadview') {
+								changeMaptype = daum.maps.MapTypeId.ROADVIEW;
+
+							} else if (maptype === 'terrain') {
+								changeMaptype = daum.maps.MapTypeId.TERRAIN;
+
+							} else if (maptype === 'use_district') {
+								changeMaptype = daum.maps.MapTypeId.USE_DISTRICT;
+							}
+
+							// 이미 등록된 지도 타입 제거
+							if (currentTypeId) {
+								map.removeOverlayMapTypeId(currentTypeId);
+							}
+
+							// 선택한 지도정보 추가
+							map.addOverlayMapTypeId(changeMaptype);
+
+							// 갱신
+							currentTypeId = changeMaptype;
+						}
+
+						//2.지도위에 마커 표시
+
+						var geocoder = new daum.maps.services.Geocoder();
+
+						
+						//for 다중마커
+						var positions = [ {
+							title : '명동',
+							addr : '서울 중구 명동'
+						}, {
+							title : '해운대',
+							addr : '부산 해운대구'
+						}, {
+							title : '테디베어 박물관',
+							addr : '제주 서귀포시 중문관광로110번길 31'
+						} ];
+						var coords
+						var markerset = [];
+						var infowindowset = [];
+						var temp_x = [], temp_y = [];
+						var index = 0;						
+
+						
+						for (i = 0; i < positions.length; i++) {
+							temp = geocoder.addressSearch(positions[i].addr, callback )
+
+							addwindow(positions[i].title)
+						}
+
+						//markerset에 marker추가
+						function addMarker(position) {
+							var marker = new daum.maps.Marker({
+								position : position
+							});
+
+							marker.setMap(map);
+							markerset.push(marker);
+
+						}
+						function addwindow(title) {
+							//마커+설명표시
+							var infowindow = new daum.maps.InfoWindow(
+									{
+										content : '<div style="width:150px;text-align:center;padding:6px 0;"> '
+												+ title + ' </div>'
+									});
+							infowindowset.push(infowindow);
+						}
+						//markerset에 잇는 마커 지도에 추가
+						function setMarkers(map) {
+							for (var i = 0; i < markerset.length; i++) {
+								markerset[i].setMap(map);
+								infowindow[i].open(map, marker)
+							}
+						}
+
+						/* 클릭이벤트시사용 
+						//infowindow표시 
+						function makeOverListener(map,marker,infowindow){
+							return function(){
+								infowindow.open(map,marker);
+							}
+						}
+						
+						//infowindow닫기
+						function makeOutListener(infowindow){
+							return function(){
+								infowindow.close();
+							}
+						} */
+					</script>
+
+
+				</div>
+				<div class="card-footer small text-muted">
+					You must have at least one choice <br>선택은 1가지 이상 하셔야 합니다
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- /.content-wrapper -->
+
+	<!-- Scroll to Top Button -->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fa fa-angle-up"></i>
+	</a>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="js/jquery.js"></script>
+
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="js/jquery.easing.js"></script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/dataTables.bootstrap4.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/sb-admin.js"></script>
+</body>
+</html>

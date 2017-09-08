@@ -44,7 +44,7 @@
 					<ul class="navbar-nav navbar-sidenav">
 						<li class="nav-item" data-toggle="tooltip"
 							data-placement="right" title="Home""><a class="nav-link"
-							href="#"> <i class="fa fa-fw fa-dashboard"></i> <span
+							href="home.html"> <i class="fa fa-fw fa-dashboard"></i> <span
 								class="nav-link-text"> Home</span>
 						</a></li>
 						<li class="nav-item" data-toggle="tooltip" data-placement="right"
@@ -77,7 +77,7 @@
 									Recommend System </span>
 						</a>
 							<ul class="sidenav-second-level collapse" id="collapseMulti">
-								<li class = "active"><a href="#">Personality</a></li>
+								<li class = "active"><a href="score_recommend_input.html">Personality</a></li>
 								<li><a href="#">Basket Recommend</a></li>
 							</ul></li>
 
@@ -99,7 +99,7 @@
 				<div class="card-body">
 
 					<!-- 여기서 입력 받습니다. -->
-					<form action="/tourS/score_recommend_result.html" method="get">
+					<form action="/tourS/score_temp.jsp" method="get">
 						<div class="form-group">
 							<label for="gender">Gender : </label> <select
 								class="form-control " id="gender" name="gender">
@@ -172,7 +172,6 @@
 
 							<button class="btn btn-default btn-block" type="submit">Recommend</button>
 					</form>
-
 
 				</div>
 				<div class="card-footer small text-muted">
