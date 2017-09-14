@@ -49,5 +49,5 @@ public class tourVO{
 	public String toString() {
 		return "tourVO [id=" + id + ", name=" + name + ", quotient=" + quotient + ", address=" + address + "]";
 	}
-
+	
 }

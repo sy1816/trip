@@ -3,8 +3,28 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
  */
+/*
 body {
-  background: #343a40; }
+  background: #343a40;
+  background: url('../img/bg.jpg') no-repeat center center fixed;
+}
+*/
+
+.bg-faded {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+  background: url('../img/bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
 body.fixed-nav {
   padding-top: 54px; }
@@ -66,7 +86,7 @@ body.fixed-nav {
 
 #mainNav .navbar-collapse {
   overflow: auto;
-  max-height: 75vh; }
+  max-height: 35vh; }
   #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link {
     cursor: pointer; }
   #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
@@ -233,7 +253,7 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 
 .content-wrapper {
   overflow-x: hidden;
-  background: white; }
+  }
   @media (min-width: 992px) {
     .content-wrapper {
       margin-left: 250px; } }

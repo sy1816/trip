@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
 <meta name="description" content="">
 <meta name="author" content="">
 
-<script src="js/jquery.js"></script>
+<title>Business Casual - Start Bootstrap Theme</title>
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d372aa7ece602b7f0fbeace511893429&libraries=services,cluster,drawing"></script>
-
-
-<!--  
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b4b48a5fa7871dcc84060cbeebe39f18&libraries=services,cluster,drawing"></script>
--->
-
-<!-- 장소검색,주소-좌표변환/마커클러스터링용/그리기용 -->
-<title>TGF - Tour Guide For</title>
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom fonts for this template -->
-<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-
-<!-- Plugin CSS -->
-<link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="css/sb-admin.css" rel="stylesheet">
+<link href="css/business-casual.css?v=2" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d372aa7ece602b7f0fbeace511893429&libraries=services,cluster,drawing"></script>
+
 <style>
 .wrap {
 	position: absolute;
@@ -143,81 +142,58 @@
 	color: #5085BB;
 }
 </style>
+
+
 </head>
-<body class="fixed-nav" id="page-top">
 
-	<div class="content-wrapper py-3">
+<body>
 
-		<div class="container-fluid">
-			<!-- Navigation -->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-				id="mainNav">
-				<a class="navbar-brand" href="#">Tour Guide For</a>
-				<button class="navbar-toggler navbar-toggler-right" type="button"
-					data-toggle="collapse" data-target="#navbarResponsive"
-					aria-controls="navbarResponsive" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav navbar-sidenav">
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Home""><a class="nav-link" href="home.html"> <i
-								class="fa fa-fw fa-dashboard"></i> <span class="nav-link-text">
-									Home</span>
-						</a></li>
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Tables"><a class="nav-link" href="search.html"> <i
-								class="fa fa-fw fa-table"></i> <span class="nav-link-text">
-									Search Tour Spot</span>
-						</a></li>
+	<div
+		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">TOUR
+		for Korea</div>
+	<div
+		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Trip
+		On User-adapted Recommendations</div>
 
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Charts"><a
-							class="nav-link nav-link-collapse collapsed"
-							data-toggle="collapse" href="#collapseComponents"> <i
-								class="fa fa-fw fa-area-chart"></i> <span class="nav-link-text">
-									Rank</span>
-						</a>
-							<ul class="sidenav-second-level collapse" id="collapseComponents">
-								<li><a href="#">Monthly Rank</a></li>
-								<li><a href="#">Job Rank</a></li>
-								<li><a href="#">Nation Rank</a></li>
-							</ul></li>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+		<div class="container">
+			<a
+				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
+				href="#">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item  px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="home3.html">Home
+					</a></li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="search2.html">Search</a>
+					</li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="analysis.html">Analysis</a>
+					</li>
+					<li class="nav-item active px-lg-4"><a
+						class="nav-link text-uppercase text-expanded"
+						href="recommend_input2.html">Recommend <span class="sr-only">(current)</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-						<!--    active -->
+	<div class="container">
 
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Recommend System"><a
-							class="nav-link nav-link-collapse collapsed"
-							data-toggle="collapse" href="#collapseMulti"> <i
-								class="fa fa-fw fa-sitemap"></i> <span class="nav-link-text">
-									Recommend System </span>
-						</a>
-							<ul class="sidenav-second-level collapse" id="collapseMulti">
-								<li class="active"><a href="score_recommend_input.html">Personality</a></li>
-								<li><a href="#">Basket Recommend</a></li>
-							</ul></li>
-
-					</ul>
-					<ul class="navbar-nav sidenav-toggler">
-						<li class="nav-item"><a class="nav-link text-center"
-							id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
-						</a></li>
-					</ul>
-				</div>
-			</nav>
-
-			<!-- Example Tables Card -->
-			<div class="card mb-3">
-				<div class="card-header">
-					<i class="fa fa-table"></i> Tour Recommend Service - User
-					Personality
-				</div>
-				<div class="card-body">
-
+		<div class="bg-faded p-4 my-4 text-center">
+			<!-- 여기서 입력 받습니다. -->
+			
 					<!--  추천여행지 map ! -->
 					<div id="map" style="width: 100%; height: 400px;"></div>
+					<br>
 					<p>
 						<button onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
 						<button onclick="setOverlayMapTypeId('roadview')">로드뷰
@@ -894,37 +870,20 @@
 							}
 						} */
 					</script>
+			
 
-
-				</div>
-				<div class="card-footer small text-muted">
-					You can get information, when you hover over the pin<br> 핀 위에
-					마우스를 올리면 정보를 볼 수 있습니다.
-				</div>
-			</div>
 
 		</div>
-		<!-- /.container-fluid -->
-
+		<!--  Input Fade -->
 	</div>
-	<!-- /.content-wrapper -->
+	<!-- /.container -->
 
-	<!-- Scroll to Top Button -->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fa fa-angle-up"></i>
-	</a>
+	<footer class="bg-faded text-center py-5">
+		<div class="container">
+			<p class="m-0">Copyright &copy; Your Website 2017</p>
+		</div>
+	</footer>
 
-	<!-- Bootstrap core JavaScript -->
-
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.js"></script>
-
-	<!-- Plugin JavaScript -->
-	<script src="js/jquery.easing.js"></script>
-	<script src="js/jquery.dataTables.js"></script>
-	<script src="js/dataTables.bootstrap4.js"></script>
-
-	<!-- Custom scripts for this template -->
-	<script src="js/sb-admin.js"></script>
 </body>
+
 </html>

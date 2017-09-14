@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Business Casual - Start Bootstrap Theme</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+	rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="css/business-casual.css" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/Chart.js"></script>
+
+<script type="text/javascript">
+	// param 찾는 함수
+	function getParam(sname) {
+		var params = location.search.substr(location.search.indexOf("?") + 1);
+		var sval = "";
+		params = params.split("&");
+		// split param and value into individual pieces
+		for (var i = 0; i < params.length; i++) {
+			temp = params[i].split("=");
+			if ([ temp[0] ] == sname) {
+				sval = temp[1];
+			}
+		}
+		return sval;
+	}
+	
+	$(document).ready(function(){
+		var type = "ds";
+		type = getParam("type");
+		console.log(type);
+		$("#type_title").append("<strong>" + type +"</strong>");
+
+	})
+	
+</script>
+
+
+</head>
+
+<body>
+
+	<div
+		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">TOUR
+		for Korea</div>
+	<div
+		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Trip
+		On User-adapted Recommendations</div>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+		<div class="container">
+			<a
+				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
+				href="#">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item  px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="home3.html">Home
+					</a></li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="search2.html">Search</a>
+					</li>
+					<li class="nav-item active px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="analysis.html">Analysis<span
+							class="sr-only">(current)</span></a></li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded"
+						href="recommend_input2.html">Recommend </a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="bg-faded p-4 my-4">
+			<hr class="divider">
+			<h2 class="text-center text-lg text-uppercase my-0" id ="type_title">
+			</h2>
+			<hr class="divider">
+
+			<!-- 여기서 입력 받습니다. -->
+		    
+		    <!-- Example Pie Chart Card -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-pie-chart"></i>
+                Pie Chart Example
+              </div>
+              <div class="card-body">
+                <canvas id="myPieChart" width="30%" height="11"></canvas>
+              </div>
+              <div class="card-footer small text-muted">
+                Updated yesterday at 11:59 PM
+              </div>
+            </div>
+			
+
+
+
+		</div>
+		<!--  Input Fade -->
+	</div>
+	<!-- /.container -->
+
+	<footer class="bg-faded text-center py-5">
+		<div class="container">
+			<p class="m-0">Copyright &copy; Your Website 2017</p>
+		</div>
+	</footer>
+
+	<script>
+	// -- Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Blue", "Red", "Yellow", "Green"],
+    datasets: [{
+      data: [12.21, 15.58, 11.25, 8.32],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+    }],
+  },
+});
+	</script>
+
+
+</body>
+
+</html>

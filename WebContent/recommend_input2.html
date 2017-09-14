@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Business Casual - Start Bootstrap Theme</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+	rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="css/business-casual.css" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+
+
+</head>
+
+<body>
+
+	<div
+		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">TOUR
+		for Korea</div>
+	<div
+		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Trip
+		On User-adapted Recommendations</div>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+		<div class="container">
+			<a
+				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
+				href="#">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item  px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="home3.html">Home
+					</a></li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="search2.html">Search</a>
+					</li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="analysis.html">Analysis</a>
+					</li>
+					<li class="nav-item active px-lg-4"><a
+						class="nav-link text-uppercase text-expanded"
+						href="recommend_input2.html">Recommend <span class="sr-only">(current)</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="bg-faded p-4 my-4">
+			<hr class="divider">
+			<h2 class="text-center text-lg text-uppercase my-0">
+				<strong>Recommend Service</strong>
+			</h2>
+			<hr class="divider">
+			<p style="text-align: center">Enter your tendency. Then, our TOUR
+				service will find a suitable destination for you.</p>
+
+			<!-- 여기서 입력 받습니다. -->
+			<form action="/tourS/recommend_result2.html" method="get">
+				<div class="col-sm-5">
+					<label for="gender">Gender : </label> <select class="form-control"
+						id="gender" name="gender">
+						<option value="-1">No selected</option>
+						<option value="1">Male</option>
+						<option value="2">Female</option>
+					</select>
+					 							<br> <label for="age">Age : </label> <select
+								class="form-control  " id="age" name="age">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="0">10s (10대)</option>
+								<option value="1">20s (20대)</option>
+								<option value="2">30s (30대)</option>
+								<option value="3">40s (40대)</option>
+								<option value="4">50s (50대)</option>
+								<option value="5">60s more (60대 이상)</option>
+							</select> <br> <label for="nation">Nation : </label> <select
+								class="form-control  " id="nation" name="nation">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Japan (일본)</option>
+								<option value="2">China (중국)</option>
+								<option value="3">Hongkong (홍콩)</option>
+								<option value="4">Singapore (싱가포르)</option>
+								<option value="5">Taiwan (대만)</option>
+								<option value="6">Thailand (태국)</option>
+								<option value="7">Malaysia (말레이시아)</option>
+								<option value="8">Australia (호주)</option>
+								<option value="9">U.S.A (미국)</option>
+								<option value="10">Canada (캐나다)</option>
+								<option value="11">U.K (영국)</option>
+								<option value="12">Germany (독일)</option>
+								<option value="13">France (프랑스)</option>
+								<option value="14">Russia (러시아)</option>
+								<option value="15">the Mideast (중동)</option>
+								<option value="16">India (인도)</option>
+								<option value="97">the Others (기타)</option>
+							</select> <br> <label for="job">Job : </label> <select
+								class="form-control select-lg" id="job" name="job">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Civil servant / Soldier (공무원 / 군인)</option>
+								<option value="2">Businessman / Manager (기업인 / 경영직)</option>
+								<option value="3">Office job / Technical post (사무 / 기술직)</option>
+								<option value="4">Sales / Service (판매 / 서비스직)</option>
+								<option value="5">Specialized job (전문직)</option>
+								<option value="6">Production employee / Simple labor (생산, 기능, 노무직)</option>
+								<option value="7">Owner-operator (자영업자)</option>
+								<option value="8">Student (학생)</option>
+								<option value="9">Housewife (주부)</option>
+								<option value="10">Retiree  (은퇴자)</option>
+								<option value="11">Inoccupation (무직)</option>
+								<option value="12">the Others (기타)</option>
+							</select> <br> <label for="with">With : </label> <select
+								class="form-control  " id="with" name="with">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Solo (혼자)</option>
+								<option value="2">Family / Relative (가족 / 친척)</option>
+								<option value="3">Friend / Couple (친구 / 연인)</option>
+								<option value="4">Colleague (직장동료)</option>
+								<option value="5">the Others (기타)</option>
+							</select> <br> <label for="purpose">Purpose of visit : </label> <select
+								class="form-control  " id="purpose" name="purpose">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1"">Leisure, Amusement & Individual vacation (여가, 위락, 개별휴가)</option>
+								<option value="2">Beauty, Health & Therapy (뷰티, 건강 및 치료)</option>
+								<option value="3">Religion and pilgrimage (종교 및 순례)</option>
+								<option value="4">Shopping (쇼핑)</option>
+								<option value="5">Visit friends and relatives (친구, 친지 방문)</option>
+								<option value="6">Business or professional activity  (사업 또는 전문 활동)</option>
+								<option value="7">Education (교육)</option>
+							</select> <br> <label for="month">Month : </label> <select
+								class="form-control  " id="month" name="month">
+								<option value="-1">No selected (선택되지 않음)</option>
+								<option value="1">January (1월)</option>
+								<option value="2">Febuary (2월)</option>
+								<option value="3">March (3월)</option>
+								<option value="4">April (4월)</option>
+								<option value="5">May (5월)</option>
+								<option value="6">June (6월)</option>
+								<option value="7">July (7월)</option>
+								<option value="8">August (8월)</option>
+								<option value="9">September (9월)</option>
+								<option value="10">October (10월)</option>
+								<option value="11">November (11월)</option>
+								<option value="12">December (12월)</option>
+							</select> <br>
+ 
+					<button class="btn btn-default" type="submit">Go</button>
+			</form>
+
+
+		</div>
+		<!--  Input Fade -->
+	</div>
+	<!-- /.container -->
+
+	<footer class="bg-faded text-center py-5">
+		<div class="container">
+			<p class="m-0">Copyright &copy; Your Website 2017</p>
+		</div>
+	</footer>
+
+
+<script type="text/javascript">
+$('.selectpicker').selectpicker({
+	  style: 'btn-info',
+	  size: 4
+	});
+console.log("FIND");
+</script>
+
+
+</body>
+
+</html>
