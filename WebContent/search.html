@@ -21,8 +21,64 @@
 <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/sb-admin.css?ver=1" rel="stylesheet">
+<link href="css/sb-admin.css" rel="stylesheet">
 
+<script src="js/jquery.js"></script>
+
+
+<script type="text/javascript">
+	var table_state = false;
+	$(document).ready(function() {
+
+		var table_template = "<tr data-href='_SITE'><td>_RANK</td><td>_NAME</td><td>_AREA</td><td>_ADDRESS</td></tr>";
+		// 만들어 질 경우 옮겨질 사이트
+		var result_url = "";
+		var s = "";
+		var str = "";
+		
+		$.ajax({
+			url : "search.jsp",
+			type : "GET",
+			success : function(data) {
+				data = JSON.parse(data);
+				
+		   		data.forEach(function(item, index) {
+		   			s = table_template;
+		   			result_url = "tourspot.jsp?id=" + item.id;
+		   			s = s.replace("_SITE", result_url);
+		   			s = s.replace("_RANK", item.rank);
+		   			s = s.replace("_NAME", item.tourspot);
+		   			s = s.replace("_AREA", item.area);
+		   			s = s.replace("_ADDRESS", item.address);
+		   			str += s;
+		   		});			
+		   		$("#table_body").empty;					
+		   		$("#table_body").append(str);
+					console.log("SUCCESS");
+					  $(document).ready(function() {
+						    $('#dataTable2').DataTable();
+						  });
+
+			}
+		});
+		
+		table_state = true;
+	});
+
+	console.log("END");
+
+	if(table_state == true){
+		console.log(table_state);
+		(function(){
+			  $(document).ready(function() {
+				    $('#dataTable2').DataTable();
+				  });
+		})(jQuery);
+	}
+
+	</script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/dataTables.bootstrap4.js"></script>
 </head>
 <body class="fixed-nav" id="page-top">
 
@@ -42,12 +98,12 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav navbar-sidenav">
-						<li class="nav-item active" data-toggle="tooltip"
+						<li class="nav-item" data-toggle="tooltip"
 							data-placement="right" title="Home""><a class="nav-link"
 							href="home.html"> <i class="fa fa-fw fa-dashboard"></i> <span
 								class="nav-link-text"> Home</span>
 						</a></li>
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
+						<li class="nav-item  active" data-toggle="tooltip" data-placement="right"
 							title="Tables"><a class="nav-link" href="search.html"> <i
 								class="fa fa-fw fa-table"></i> <span class="nav-link-text">
 									Search Tour Spot</span>
@@ -90,15 +146,37 @@
 				</div>
 			</nav>
 			<!-- 여기서 입력 받습니다. -->
+						
+			<div class="table-responsive">
+              <table class="table table-bordered table-hover" width="100%" id="dataTable2" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th width = "10%">Rank #</th>
+                    <th>Tourspot</th>
+                    <th>Area</th>
+                    <th>Address</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Rank #</th>
+                    <th>Tourspot</th>
+                    <th>Area</th>
+                    <th>Address</th>
+                  </tr>
+                </tfoot>
+                <tbody id = "table_body">
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">
+            Updated yesterday at 11:59 PM
+          </div>
+        </div>
+        <!-- table-responsive -->
 			
-			<div class = "container">
-				<div class = "jumbotron">
-					<h1>Tour Guide For</h1>
-				</div>
-				<div class = "text-center">
-					<img src="https://cdn.pixabay.com/photo/2016/08/16/13/19/man-1597963_960_720.png" class="img-fluid" alt="Cinque Terre" width="304" height="236">
-				</div>
-			</div>
+			
 					
 
 		</div>
@@ -113,17 +191,14 @@
 	</a>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="js/jquery.js"></script>
 
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.js"></script>
 
 	<!-- Plugin JavaScript -->
 	<script src="js/jquery.easing.js"></script>
-	<script src="js/jquery.dataTables.js"></script>
-	<script src="js/dataTables.bootstrap4.js"></script>
 
 	<!-- Custom scripts for this template -->
-  <script src="js/sb-admin.js"></script>
+	<script src="js/sb-admin.js"></script>
 </body>
 </html>

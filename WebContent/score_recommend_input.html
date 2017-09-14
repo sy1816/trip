@@ -48,7 +48,7 @@
 								class="nav-link-text"> Home</span>
 						</a></li>
 						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Tables"><a class="nav-link" href="#"> <i
+							title="Tables"><a class="nav-link" href="search.html"> <i
 								class="fa fa-fw fa-table"></i> <span class="nav-link-text">
 									Search Tour Spot</span>
 						</a></li>
@@ -100,7 +100,7 @@
 
 					<!-- 여기서 입력 받습니다. -->
 					<form action="/tourS/score_recommend_result.html" method="get">
-						<div class="form-group">
+						<div class="form-group col-sm-5">
 							<label for="gender">Gender : </label> <select
 								class="form-control " id="gender" name="gender">
 								<option value="-1">No selected (선택되지 않음)</option>
@@ -168,7 +168,7 @@
 								<option value="5">Visit friends and relatives (친구, 친지 방문)</option>
 								<option value="6">Business or professional activity  (사업 또는 전문 활동)</option>
 								<option value="7">Education (교육)</option>
-							</select> <br> <select
+							</select> <br> <label for="month">Month : </label> <select
 								class="form-control  " id="month" name="month">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="1">January (1월)</option>
@@ -186,7 +186,7 @@
 							</select> <br>
 
 
-							<button class="btn btn-default btn-block" type="submit">Recommend</button>
+							<button class="btn btn-default" type="submit">Go</button>
 					</form>
 
 				</div>
@@ -218,6 +218,6 @@
 	<script src="js/dataTables.bootstrap4.js"></script>
 
 	<!-- Custom scripts for this template -->
-	<script src="js/sb-admin.js"></script>
+	<script src="js/sb-admin.js?ver=1"></script>
 </body>
 </html>
