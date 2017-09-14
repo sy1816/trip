@@ -16,8 +16,8 @@ public class connectionDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(url, "tour", "tiger");
+			String url = "jdbc:oracle:thin:/@dbtourforkorea.cxnc2jzecful.ap-northeast-2.rds.amazonaws.com:1521:ORCL";
+			conn = DriverManager.getConnection(url, "tourManager", "tourtour123");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -26,19 +26,7 @@ public class connectionDAO {
 	
 	
 	
-	public static Connection getConnection_oracle() {
-		Connection conn = null;
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			String url = "jdbc:mysql://112.175.184.93";
-			conn = DriverManager.getConnection(url, "tourforkorea", "tourtour123");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
+	
 	
 	
 	public static void main(String args[]) {
