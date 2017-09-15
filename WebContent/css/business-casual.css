@@ -71,3 +71,7 @@ hr.divider {
 red {
 	color: #f00 !important;
 }
+
+.h-70 {
+  height: 70% !important;
+}

@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class connectionDAO {
 
-
+/*
 	public static Connection getConnection() {
 		Connection conn = null;
 
@@ -23,7 +23,8 @@ public class connectionDAO {
 		}
 		return conn;
 	}	
-/*	
+	*/
+
 	public static Connection getConnection() {
 		Connection conn = null;
 
@@ -37,9 +38,6 @@ public class connectionDAO {
 		}
 		return conn;
 	}
-	*/
-	
-	
 	
 	
 	
