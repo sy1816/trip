@@ -7,12 +7,15 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 
+
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Converter {
 	private static Gson gson;
 	static {
-		gson = new Gson();
+//		gson = new Gson();
+		gson = new GsonBuilder().disableHtmlEscaping().create();
 	}
 	
 	public static String convertToJson(Object obj) {

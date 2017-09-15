@@ -4,12 +4,20 @@
 <%@ page import="recommend.*"%>
 <%
 	String json;
+	String data = request.getParameter("id");
 	
 	searchDAO sDAO = new searchDAO();
-
-	ArrayList<searchVO> search = new ArrayList<searchVO>();
-	search = sDAO.searchList();
-	json = Converter.convertToJson(search);
+	
+	if(data == null){
+		ArrayList<searchVO> search = null;
+		search = sDAO.searchList();
+		json = Converter.convertToJson(search);
+	} else{
+		searchVO search = null;
+		search = sDAO.tourSpotInfo(data);
+		System.out.println(search.getImage_url1());
+		json = Converter.convertToJson(search);
+	}
 
 %>
 

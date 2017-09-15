@@ -23,7 +23,7 @@
 	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="css/business-casual.css" rel="stylesheet">
+<link href="css/business-casual.css?ver=d" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
 <script src="js/jquery.js"></script>
@@ -48,7 +48,7 @@
 				
 		   		data.forEach(function(item, index) {
 		   			s = table_template;
-		   			result_url = "tourspot.jsp?id=" + item.id;
+		   			result_url = "tourspot.html?id=" + item.id;
 		   			s = s.replace("_SITE", result_url);
 		   			s = s.replace("_RANK", item.rank);
 		   			s = s.replace("_NAME", item.tourspot);
@@ -62,7 +62,6 @@
 					  $(document).ready(function() {
 						    $('#dataTable2').DataTable();
 						  });
-
 			}
 		});
 		
@@ -79,6 +78,15 @@
 				  });
 		})(jQuery);
 	}
+	
+	// tr을 클릭할 경우 하이퍼링크 생성
+		$(document).on("click", "tr", function() {
+			if($(this).data("href") != undefined){
+		        document.location = $(this).data('href');
+//		        console.log($(this).data('href'));
+			}
+	        return false;
+	 });
 
 	</script>
 	<script src="js/jquery.dataTables.js"></script>
@@ -89,15 +97,12 @@
 
 <body>
 
-	<div
-		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">TOUR
-		for Korea</div>
-	<div
-		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Trip
-		On User-adapted Recommendations</div>
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+    <div class="tagline-upper text-center text-heading text-shadow text-white mt-4 d-none d-lg-block"><red>TOUR</red> for Korea</div>
+    <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-4 d-none d-lg-block"><red>T</red>rip <red>O</red>n <red>U</red>ser-adapted <red>R</red>ecommendations</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-3">
 		<div class="container">
 			<a
 				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"

@@ -6,10 +6,24 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.mysql.jdbc.PreparedStatement;
-
 public class connectionDAO {
 
+
+	public static Connection getConnection() {
+		Connection conn = null;
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			conn = DriverManager.getConnection(url, "tour", "tiger");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}	
+/*	
 	public static Connection getConnection() {
 		Connection conn = null;
 
@@ -23,7 +37,7 @@ public class connectionDAO {
 		}
 		return conn;
 	}
-	
+	*/
 	
 	
 	

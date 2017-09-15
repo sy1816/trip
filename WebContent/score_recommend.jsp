@@ -17,7 +17,6 @@
 	ArrayList<tourVO> tour = new ArrayList<tourVO>();
 	tour = rDAO.recommendService(gender, age, nation, job, with, purpose, month);
 	json = Converter.convertToJson(tour);
-
 %>
 
 <%=json %>

@@ -23,7 +23,7 @@
 	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="css/business-casual.css" rel="stylesheet">
+<link href="css/business-casual.css?v=13" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
 <script src="js/jquery.js"></script>
@@ -35,15 +35,26 @@
 
 <body>
 
+
 	<div
-		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">TOUR
-		for Korea</div>
+		class="tagline-upper text-center text-heading text-shadow text-white mt-4 d-none d-lg-block">
+		<red>TOUR</red>
+		for Korea
+	</div>
 	<div
-		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Trip
-		On User-adapted Recommendations</div>
+		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-4 d-none d-lg-block">
+		<red>T</red>
+		rip
+		<red>O</red>
+		n
+		<red>U</red>
+		ser-adapted
+		<red>R</red>
+		ecommendations
+	</div>
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-3">
 		<div class="container">
 			<a
 				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
@@ -85,16 +96,21 @@
 				service will find a suitable destination for you.</p>
 
 			<!-- 여기서 입력 받습니다. -->
-			<form action="/tourS/recommend_result2.html" method="get">
-				<div class="col-sm-5">
-					<label for="gender">Gender : </label> <select class="form-control"
-						id="gender" name="gender">
-						<option value="-1">No selected</option>
-						<option value="1">Male</option>
-						<option value="2">Female</option>
-					</select>
-					 							<br> <label for="age">Age : </label> <select
-								class="form-control  " id="age" name="age">
+			<div class="container-fluid text-center">
+				<form action="/tourS/recommend_result2.html" method="get">
+					<div class="row  pb-2">
+						<div class="col-sm-6">
+							<label for="gender">Gender : </label> <select
+								class="form-control" id="gender" name="gender">
+								<option value="-1">No selected</option>
+								<option value="1">Male</option>
+								<option value="2">Female</option>
+							</select>
+						</div>
+
+						<div class="col-sm-6">
+							<label for="age">Age : </label> <select class="form-control  "
+								id="age" name="age">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="0">10s (10대)</option>
 								<option value="1">20s (20대)</option>
@@ -102,7 +118,13 @@
 								<option value="3">40s (40대)</option>
 								<option value="4">50s (50대)</option>
 								<option value="5">60s more (60대 이상)</option>
-							</select> <br> <label for="nation">Nation : </label> <select
+							</select>
+						</div>
+					</div>
+
+					<div class="row  pb-2">
+						<div class="col-sm-6">
+							<label for="nation">Nation : </label> <select
 								class="form-control  " id="nation" name="nation">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="1"">Japan (일본)</option>
@@ -122,7 +144,10 @@
 								<option value="15">the Mideast (중동)</option>
 								<option value="16">India (인도)</option>
 								<option value="97">the Others (기타)</option>
-							</select> <br> <label for="job">Job : </label> <select
+							</select>
+						</div>
+						<div class="col-sm-6">
+							<label for="job">Job : </label> <select
 								class="form-control select-lg" id="job" name="job">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="1"">Civil servant / Soldier (공무원 / 군인)</option>
@@ -137,15 +162,24 @@
 								<option value="10">Retiree  (은퇴자)</option>
 								<option value="11">Inoccupation (무직)</option>
 								<option value="12">the Others (기타)</option>
-							</select> <br> <label for="with">With : </label> <select
-								class="form-control  " id="with" name="with">
+							</select>
+						</div>
+					</div>
+
+					<div class="row  pb-2">
+						<div class="col-sm-6">
+							<label for="with">With : </label> <select class="form-control  "
+								id="with" name="with">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="1"">Solo (혼자)</option>
 								<option value="2">Family / Relative (가족 / 친척)</option>
 								<option value="3">Friend / Couple (친구 / 연인)</option>
 								<option value="4">Colleague (직장동료)</option>
 								<option value="5">the Others (기타)</option>
-							</select> <br> <label for="purpose">Purpose of visit : </label> <select
+							</select>
+						</div>
+						<div class="col-sm-6">
+							<label for="purpose">Purpose of visit : </label> <select
 								class="form-control  " id="purpose" name="purpose">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="1"">Leisure, Amusement & Individual vacation (여가, 위락, 개별휴가)</option>
@@ -155,7 +189,13 @@
 								<option value="5">Visit friends and relatives (친구, 친지 방문)</option>
 								<option value="6">Business or professional activity  (사업 또는 전문 활동)</option>
 								<option value="7">Education (교육)</option>
-							</select> <br> <label for="month">Month : </label> <select
+							</select>
+						</div>
+					</div>
+
+					<div class="row  pb-2">
+						<div class="col-sm-6">
+							<label for="month">Month : </label> <select
 								class="form-control  " id="month" name="month">
 								<option value="-1">No selected (선택되지 않음)</option>
 								<option value="1">January (1월)</option>
@@ -170,11 +210,15 @@
 								<option value="10">October (10월)</option>
 								<option value="11">November (11월)</option>
 								<option value="12">December (12월)</option>
-							</select> <br>
- 
+							</select>
+						</div>
+						<div class="col-sm-6  pt-5">
 					<button class="btn btn-default" type="submit">Go</button>
-			</form>
+						</div>
+					</div>
 
+				</form>
+			</div>
 
 		</div>
 		<!--  Input Fade -->
@@ -188,13 +232,13 @@
 	</footer>
 
 
-<script type="text/javascript">
-$('.selectpicker').selectpicker({
-	  style: 'btn-info',
-	  size: 4
-	});
-console.log("FIND");
-</script>
+	<script type="text/javascript">
+		$('.selectpicker').selectpicker({
+			style : 'btn-info',
+			size : 4
+		});
+		console.log("FIND");
+	</script>
 
 
 </body>

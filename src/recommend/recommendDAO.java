@@ -127,9 +127,11 @@ public class recommendDAO extends connectionDAO{
 				addQuotient(conn, name, tour);
 			}
 			
+			/*
 			for(int i=0; i<135; i++) {
 				System.out.println("i : " + i + " / t : " + tour.get(i));
 			}
+			*/
 
 			Collections.sort(tour, new Comparator<tourVO>() {
 				@Override

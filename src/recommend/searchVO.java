@@ -19,12 +19,14 @@ public class searchVO {
 		image_url2 = null;
 	}
 	
-	searchVO(int id, int rank, String tourspot, String area, String address){
+	searchVO(int id, int rank, String tourspot, String area, String address, String image_url1, String image_url2){
 		this.id = id;
 		this.rank = rank;
 		this.tourspot = tourspot;
 		this.area = area;
 		this.address = address;
+		this.image_url1 = image_url1;
+		this.image_url2 = image_url2;
 	}
 	
 	public int getId() {

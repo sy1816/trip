@@ -1,176 +1,496 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Tour for Korea</title>
+
+<title>TOUR for Korea</title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom fonts for this template -->
-<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-
-<!-- Plugin CSS -->
-<link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="css/sb-admin.css?ver=1" rel="stylesheet">
+<link href="css/business-casual.css?ver=da" rel="stylesheet">
+<link href="css/sb-admin.css?ver=2" rel="stylesheet">
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="js/jquery.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/Chart.js"></script>
+
+<script type="text/javascript">
+	// param 찾는 함수
+	function getParam(sname) {
+		var params = location.search.substr(location.search.indexOf("?") + 1);
+		var sval = "";
+		params = params.split("&");
+		// split param and value into individual pieces
+		for (var i = 0; i < params.length; i++) {
+			temp = params[i].split("=");
+			if ([ temp[0] ] == sname) {
+				sval = temp[1];
+			}
+		}
+		return sval;
+	}
+	
+
+	
+	var id_;
+	id_ = getParam("id");
+	
+	var json_data;
+	
+	// Print_Info Method
+	$(document).ready(function() {
+
+		var table_template = "<tr data-href='_SITE'><td>_RANK</td><td>_NAME</td><td>_AREA</td><td>_ADDRESS</td></tr>";
+		var s = "";
+		var str = "";
+		
+		$.ajax({
+			url : "search.jsp",
+			type : "GET",
+			data : {id : id_},
+			success : function(data) {
+				json_data = JSON.parse(data);
+
+		   		$("#tourspot_title").append(json_data.tourspot);
+				$("#img_1").attr("src", json_data.image_url1);
+				$("#img_2").attr("src", json_data.image_url2);
+				// 여기까지가 관광지 개요 정보
+				
+				// 이후부터 관광지 통계 정보
+				pieChart();
+			}
+		});
+	});
+	
+</script>
 
 </head>
-<body class="fixed-nav" id="page-top">
 
-	<div class="content-wrapper py-3">
-
-		<div class="container-fluid">
-
-			<!-- Navigation -->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-				id="mainNav">
-				<a class="navbar-brand" href="#">Tour for Korea</a>
-				<button class="navbar-toggler navbar-toggler-right" type="button"
-					data-toggle="collapse" data-target="#navbarResponsive"
-					aria-controls="navbarResponsive" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav navbar-sidenav">
-						<li class="nav-item active" data-toggle="tooltip"
-							data-placement="right" title="Home""><a class="nav-link"
-							href="home.html"> <i class="fa fa-fw fa-dashboard"></i> <span
-								class="nav-link-text"> Home</span>
-						</a></li>
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Tables"><a class="nav-link" href="search.html"> <i
-								class="fa fa-fw fa-table"></i> <span class="nav-link-text">
-									Search Tour Spot</span>
-						</a></li>
-
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Charts"><a
-							class="nav-link nav-link-collapse collapsed"
-							data-toggle="collapse" href="#collapseComponents"> <i
-								class="fa fa-fw fa-area-chart"></i> <span class="nav-link-text">
-									Rank</span>
-						</a>
-							<ul class="sidenav-second-level collapse" id="collapseComponents">
-								<li><a href="#">Monthly Rank</a></li>
-								<li><a href="#">Job Rank</a></li>
-								<li><a href="#">Nation Rank</a></li>
-							</ul></li>
+<body id="page-top">
 
 
-						<!--    active -->
+    <div class="tagline-upper text-center text-heading text-shadow text-white mt-4 d-none d-lg-block"><red>TOUR</red> for Korea</div>
+    <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-4 d-none d-lg-block"><red>T</red>rip <red>O</red>n <red>U</red>ser-adapted <red>R</red>ecommendations</div>
 
-						<li class="nav-item" data-toggle="tooltip" data-placement="right"
-							title="Recommend System"><a
-							class="nav-link nav-link-collapse collapsed"
-							data-toggle="collapse" href="#collapseMulti"> <i
-								class="fa fa-fw fa-sitemap"></i> <span class="nav-link-text">
-									Recommend System </span>
-						</a>
-							<ul class="sidenav-second-level collapse" id="collapseMulti">
-								<li><a href="score_recommend_input.html">Personality</a></li>
-								<li><a href="#">Basket Recommend</a></li>
-							</ul></li>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-3">
+		<div class="container">
+			<a
+				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
+				href="#">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item  px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="home3.html">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item active px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="search2.html">Search</a>
+					</li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="analysis.html">Analysis</a>
+					</li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded"
+						href="recommend_input2.html">Recommend</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-					</ul>
-					<ul class="navbar-nav sidenav-toggler">
-						<li class="nav-item"><a class="nav-link text-center"
-							id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
-						</a></li>
-					</ul>
+	<div class="container">
+
+		<div class="bg-faded p-4 my-4">
+			<hr class="divider">
+			<h2 class="text-center text-lg text-uppercase my-0"
+				id="tourspot_title"></h2>
+			<hr class="divider">
+
+			<!-- Image Carousel -->
+			<div id="carouselExampleIndicators" class="carousel slide"
+				data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0"
+						class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				</ol>
+				<div class="carousel-inner" role="listbox"
+					style="width: 100%; height: 500px !important;">
+					<div class="carousel-item active">
+						<img class="d-block img-fluid w-100" src="" id="img_1" alt="">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block img-fluid w-100" src="" id="img_2" alt="">
+					</div>
 				</div>
-			</nav>
-			<!-- 여기서 입력 받습니다. -->
-			
-			<div class = "container">
-      <div class="bg-faded p-4 my-4">
-        <!-- Image Carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <img class="d-block img-fluid w-100" src="bootstrap/example2/img/slide-1.jpg" alt="">
-              <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-shadow">First Slide</h3>
-                <p class="text-shadow">This is the caption for the first slide.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid w-100" src="bootstrap/example2/img/slide-2.jpg" alt="">
-              <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-shadow">Second Slide</h3>
-                <p class="text-shadow">This is the caption for the second slide.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid w-100" src="bootstrap/example2/img/slide-3.jpg" alt="">
-              <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-shadow">Third Slide</h3>
-                <p class="text-shadow">This is the caption for the third slide.</p>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-        <!-- Welcome Message -->
-        <div class="text-center mt-4">
-          <div class="text-heading text-muted text-lg">Welcome To</div>
-          <h1 class="my-2">Business Casual</h1>
-          <div class="text-heading text-muted text-lg">By
-            <strong>Start Bootstrap</strong>
-          </div>
-        </div>
-      </div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators"
+					role="button" data-slide="prev"> <span
+					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Previous</span>
+				</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
+					role="button" data-slide="next"> <span
+					class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
 
+		<!-- 개요 종료 -->
+
+		<!-- 관광지 통계 정보 -->
+		<div class="bg-faded p-4 my-4">
+			<hr class="divider">
+			<h2 class="text-center text-lg text-uppercase my-0">statistical
+				information</h2>
+			<hr class="divider pb-3">
+
+			<div class="row">
+				<div class="col-lg-5">
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-pie-chart"></i> Pie Chart Example
+						</div>
+						<div class="card-body">
+							<canvas id="myPieChart" width="100%" height="100"></canvas>
+						</div>
+						<div class="card-body py-2 small  text-center" >
+							<hr class="mt-0 mb-3">
+
+							<!--  Button -->
+
+
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary dropdown-toggle"
+									data-toggle="dropdown">
+									Type <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu" style = "text-align : center;">
+									<li><a href="#">Gender</a></li>
+									<li><a href="#">Month</a></li>
+									<li><a href="#">Nation</a></li>
+									<li><a href="#">Purpose</a></li>
+									<li><a href="#">With</a></li>
+									<li><a href="#">Job</a></li>
+								</ul>
+							</div>
+
+
+							<!--  Button End -->
+
+
+						</div>
+						<div class="card-footer small text-muted">Updated yesterday
+							at 11:59 PM</div>
+					</div>
+				</div>
+
+				<div class="col-lg-7">
+					<!-- Example Bar Chart Card -->
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-bar-chart"></i> Bar Chart Example
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-8 my-auto">
+									<canvas id="myBarChart" width="100" height="100"></canvas>
+								</div>
+								<div class="col-sm-4 text-center my-auto">
+									<div class="h4 mb-0 text-primary">$34,693</div>
+									<div class="small text-muted">YTD Revenue</div>
+									<hr>
+									<div class="h4 mb-0 text-warning">$18,474</div>
+									<div class="small text-muted">YTD Expenses</div>
+									<hr>
+									<div class="h4 mb-0 text-success">$16,219</div>
+									<div class="small text-muted">YTD Margin</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer small text-muted">Updated yesterday
+							at 11:59 PM</div>
+					</div>
+
+				</div>
 
 
 			</div>
-			<!--  container 끝 -->
-					
+			<!--  row end -->
 
 		</div>
-		<!-- /.container-fluid -->
+		<!--  관광지 통계 정보 종료 -->
+
+
+		<!-- 연관규칙 정보 -->
+
+		<div class="bg-faded p-4 my-4">
+			<hr class="divider">
+			<h2 class="text-center text-lg text-uppercase my-0">
+				Favorite <strong>Tour Spot</strong>
+			</h2>
+			<hr class="divider">
+
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover text-center"
+					width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th class="text-center" width="30%">Tourspot</th>
+							<th class="text-center" width="10%">Area</th>
+							<th class="text-center">Address</th>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr>
+							<td>장소#1</td>
+							<td>지역#1</td>
+							<td>주소#1</td>
+						</tr>
+						<tr>
+							<td>장소#2</td>
+							<td>지역#2</td>
+							<td>주소#2</td>
+						</tr>
+						<tr>
+							<td>장소#3</td>
+							<td>지역#3</td>
+							<td>주소#3</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+
+
+		</div>
+
+		<!--  그림 정보 -->
+		<div class="bg-faded p-4 my-4">
+			<hr class="divider">
+			<h2 class="text-center text-lg text-uppercase my-0">
+				Favorite <strong>Tour Spot</strong>
+			</h2>
+			<hr class="divider">
+			<div class="row  pb-4">
+				<div class="col-md-3 mb-3 mb-md-0">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 mb-3 mb-md-0">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  row  end -->
+
+			<div class="row pb-4">
+				<div class="col-md-3 mb-3 mb-md-0">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 mb-3 mb-md-0">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card h-100">
+						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
+						<div class="card-body text-center">
+							<h4 class="card-title m-0">
+								John Smith <small class="text-muted">Job Title</small>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  row  end -->
+
+
+		</div>
+
+
 
 	</div>
-	<!-- /.content-wrapper -->
+	<!-- /.container -->
 
 	<!-- Scroll to Top Button -->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fa fa-angle-up"></i>
 	</a>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="js/jquery.js"></script>
+	<footer class="bg-faded text-center py-5">
+		<div class="container">
+			<p class="m-0">Copyright &copy; Your Website 2017</p>
+		</div>
+	</footer>
 
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script>
+	// -- Pie Chart Example
+	// 파이 차트 만드는 함수
+	function pieChart(){
+		var ctx = document.getElementById("myPieChart");
+		var myPieChart = new Chart(ctx, {
+		  type: 'pie',
+		  data: {
+		    labels: ["Blue", "Red", "Yellow", "Green", "DREAM", "FALSE"],
+		    datasets: [{
+		      data: [12.21, 15.58, 11.25, 8.32, 23.12, 42.12],
+		      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+		    }],
+		  },
+		});
+	}
+		
 
-	<!-- Plugin JavaScript -->
-	<script src="js/jquery.easing.js"></script>
-	<script src="js/jquery.dataTables.js"></script>
-	<script src="js/dataTables.bootstrap4.js"></script>
+	// -- Bar Chart Example
+	var ctx = document.getElementById("myBarChart");
+	var myLineChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ["January", "February", "March", "April", "May", "June", "July"],
+	    datasets: [{
+	      label: "Revenue",
+	      backgroundColor: "rgba(2,117,216,1)",
+	      borderColor: "rgba(2,117,216,1)",
+	      data: [4215, 5312, 6251, 7841, 9821, 4984, 3324],
+	    }],
+	  },
+	  options: {
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'month'
+	        },
+	        gridLines: {
+	          display: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 6
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 15000,
+	          maxTicksLimit: 5
+	        },
+	        gridLines: {
+	          display: true
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    }
+	  }
+	});
+	
+	</script>
 
-	<!-- Custom scripts for this template -->
-  <script src="js/sb-admin.js"></script>
+	<script type="text/javascript">
+$(document).scroll(function() {
+    var scrollDistance = $(this).scrollTop();
+    if (scrollDistance > 100) {
+      $('.scroll-to-top').fadeIn();
+    } else {
+      $('.scroll-to-top').fadeOut();
+    }
+  });
+
+
+// Smooth scrolling using jQuery easing
+$(document).on('click', 'a.scroll-to-top', function(event) {
+  var $anchor = $(this);
+  $('html, body').stop().animate({
+    scrollTop: ($($anchor.attr('href')).offset().top)
+  }, 1000, 'easeInOutExpo');
+  event.preventDefault();
+});
+
+  
+</script>
+
+
 </body>
+
 </html>
