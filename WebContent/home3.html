@@ -25,6 +25,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/business-casual.css?ver=da" rel="stylesheet">
+    
 
   </head>
 
@@ -269,6 +270,37 @@
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+    
+    var json;
+    
+    $(document).ready(function(){
+    	$.ajax({
+    		url : "search.jsp",
+    		type : "GET",
+    		data : {data : "top10"},
+    		success : function(data) {
+    			data = JSON.parse(data);
+    			
+   				$("#img_1").attr("src", data[0].image_url1);
+   				$("#img_2").attr("src", data[1].image_url1);
+   				$("#img_3").attr("src", data[2].image_url1);
+   				$("#img_4").attr("src", data[3].image_url1);
+   				$("#img_5").attr("src", data[4].image_url1);
+   				$("#img_6").attr("src", data[5].image_url1);
+   				$("#img_7").attr("src", data[6].image_url1);
+   				$("#img_8").attr("src", data[7].image_url1);
+   				$("#img_9").attr("src", data[8].image_url1);
+   				$("#img_10").attr("src", data[9].image_url1);
+    			
+    			json = data;
+    		}
+    	});    	
+    });
+    
+    </script>
+
 
   </body>
 

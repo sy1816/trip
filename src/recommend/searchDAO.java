@@ -38,18 +38,24 @@ public class searchDAO extends connectionDAO {
 		return tourspot_VO;
 	}
 	
-	public static ArrayList<searchVO> searchList() {
+	public static ArrayList<searchVO> searchList(String search_type) {
+		
+		
 		ArrayList<searchVO> search_list = new ArrayList<searchVO>();
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
+		int data_num = 135;
 
 		try {
 			conn = getConnection();
 			pstm = conn.prepareStatement("select * from TOURSPOT order by V_RANK");
+			if(search_type.equals("1")) {
+				data_num = 10;
+			}
 			rs = pstm.executeQuery();
 
-			for (int i = 0; i < 135; i++) {
+			for (int i = 0; i < data_num; i++) {
 				rs.next();
 				search_list.add(new searchVO(rs.getInt("ID"), rs.getInt("V_RANK"), rs.getString("NAME"),
 						rs.getString("AREA"), rs.getString("ADDRESS"), rs.getString("IMG_1"), rs.getString("IMG_2")));

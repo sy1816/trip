@@ -10,15 +10,18 @@
 	
 	if(data == null){
 		ArrayList<searchVO> search = null;
-		search = sDAO.searchList();
+		search = sDAO.searchList("0");
 		json = Converter.convertToJson(search);
-	} else{
+	} else if(data.equals("top10")){
+		ArrayList<searchVO> search = null;
+		search = sDAO.searchList("1");
+		json = Converter.convertToJson(search);
+	} 	else{
 		searchVO search = null;
 		search = sDAO.tourSpotInfo(data);
 		System.out.println(search.getImage_url1());
 		json = Converter.convertToJson(search);
 	}
-
 %>
 
 <%=json %>
