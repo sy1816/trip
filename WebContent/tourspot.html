@@ -186,7 +186,7 @@
 
 							<div class="btn-group">
 								<button type="button" class="btn btn-primary dropdown-toggle"
-									data-toggle="dropdown">
+									data-toggle="dropdown" id="button1">
 									Type <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu" style = "text-align : center;">
@@ -401,21 +401,106 @@
 		</div>
 	</footer>
 
-	<script>
+	<script type="text/javascript">
 	// -- Pie Chart Example
 	// 파이 차트 만드는 함수
-	function pieChart(){
+	
+	var stastic_json;
+	
+	$(document).ready(function(){
+		
+		$.ajax({
+			url : "stastic.jsp",
+			type : "GET",
+			data : {id : id_},
+			success : function(data) {
+				stastic_json = JSON.parse(data);
+				  firstpieChart();
+				  $(this).parents('.btn-group').find('.dropdown-toggle').html("Gender"+' <span class="caret"></span>');
+			}
+		});
+		
+		$(".dropdown-menu li a").click(function(){
+			  var selText = $(this).text();
+			  console.log(selText);
+			  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+			  pieChart(selText);
+			});
+	});
+	
+	var myPieChart = null;
+	var CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
+	
+	function firstpieChart(){
+		
 		var ctx = document.getElementById("myPieChart");
-		var myPieChart = new Chart(ctx, {
+
+		data_temp = stastic_json.gender_c;
+		labels_temp = ["Man", "Woman"];
+
+		myPieChart = new Chart(ctx, {
+			  type: 'pie',
+			  data: {
+			    labels: labels_temp,
+			    datasets: [{
+			      data: data_temp,
+			      backgroundColor: CSS_COLOR_NAMES,
+			    }],
+			  },
+			});		
+	}
+		
+	function pieChart(category){
+		var data_temp;
+		var color_temp;
+		var labels_temp;
+
+		if(category=="Gender"){
+			data_temp = stastic_json.gender_c;
+			labels_temp = ["Man", "Woman"];
+		} else if(category=="Month"){
+			data_temp = stastic_json.month_c;
+			labels_temp = ["January", "Febuary", "March", "April","May","June","July","August","September","October","November","December",];
+		} else if(category=="Nation"){
+			data_temp = stastic_json.nation_c;
+			labels_temp = ["Japan", "China", "Hongkong", "Singapore","Taiwan","Thailand","Malaysia","Australia","U.S.A","Canada","U.K","Germany", "France", "Russia", "the Mideast", "India"];
+		} else if(category=="Job"){
+			data_temp = stastic_json.category_c;
+			labels_temp = ["Civil servant / Soldier", "Businessman / Manager", "Office job / Technical post", "Sales / Service","Specialized job","Production employee / Simple labor","Owner-operator", "Student", "Housewife", "Retiree", "Inoccupation", "the Others"];
+		} else if(category=="Month"){
+			data_temp = stastic_json.month_c;
+			labels_temp = ["January", "Febuary", "March", "April","May","June","July","August","September","October","November","December",];
+		}
+		
+		var ctx = document.getElementById("myPieChart");
+		
+		if(myPieChart != null){
+			myPieChart.destroy();
+		}
+		
+		myPieChart = new Chart(ctx, {
 		  type: 'pie',
 		  data: {
-		    labels: ["Blue", "Red", "Yellow", "Green", "DREAM", "FALSE"],
+		    labels: labels_temp,
 		    datasets: [{
-		      data: [12.21, 15.58, 11.25, 8.32, 23.12, 42.12],
-		      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+		      data: data_temp,
+		      backgroundColor: CSS_COLOR_NAMES,
 		    }],
 		  },
 		});
+
+/* 		var myPieChart = new Chart(ctx, {
+			  type: 'pie',
+			  data: {
+			    labels: ["Blue", "Red", "Yellow", "Green", "DREAM", "FALSE"],
+			    datasets: [{
+			      data: data_temp,
+			      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+			    }],
+			  },
+			});
+ */	
+	
 	}
 		
 
