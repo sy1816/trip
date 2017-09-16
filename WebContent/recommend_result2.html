@@ -205,15 +205,20 @@
 			<hr class="divider">
 			<h2 class="text-center text-lg text-uppercase my-0">Recommend
 				Spot</h2>
-			<hr class="divider pb-4">
-			<p style="text-align: center">Click the tour spot. Then, You can see the information on the tour spot..</p>
+			<hr class="divider pb-2">
+			<p style="text-align: center" id = "person_title"></p>
 			
 			<div class="row  pb-4">
           	<div class="col-md-7">
+         	 	<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-pie-chart"></i> More information
+				</div>
    			<!-- 표 -->
 			<!--  <p style="text-align: center">Click the tour spot. Then, You can see the information on the tour spot..</p>
 			-->
 			<!-- 여기서 입력 받습니다. -->
+			<div class="card-body">
 			<div class="table-responsive">
               <table class="table table-bordered table-hover" width="100%" id="dataTable2" cellspacing="0">
                 <thead align="center">
@@ -228,18 +233,28 @@
                 </tbody>
               </table>
             </div>
+            </div>
+            </div>
    			<!-- 표끝 -->
    			</div>
+   			
+   			
+   			
    			<div class="col-md-5">
 			<!--  추천여행지 map ! -->
+				<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-pie-chart"></i> Map
+						</div>
+				<div class="card-body">
 			<div id="map" style="width: 100%; height: 400px;"></div>
 			<br>
 			<p>
-				<button onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
-				<button onclick="setOverlayMapTypeId('roadview')">로드뷰 도로정보
+				<button pb-5 class="btn btn-default" onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
+				<button  class="btn btn-default" onclick="setOverlayMapTypeId('roadview')">로드뷰 도로정보
 					보기</button>
-				<button onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
-				<button onclick="setOverlayMapTypeId('use_district')">지적편집도
+				<br><button  class="btn btn-default" onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
+				<button  class="btn btn-default" onclick="setOverlayMapTypeId('use_district')">지적편집도
 					보기</button>
 				<!-- <button onclik ="setBounds()">여행지 범위</button> -->
 			</p>
@@ -273,6 +288,149 @@
 						var with_ =  getParam("with");
 						var purpose_ =  getParam("purpose");
 						var month_ =  getParam("month");
+						
+						var str_temp = "Recommendations with : ";
+						
+						
+						if(gender_=="1"){
+							str_temp = str_temp.concat("Male, ");
+						} else if(gender_=="2"){
+							str_temp = str_temp.concat("Female, ");
+						}
+						
+						if(age_ =="0"){
+							str_temp = str_temp.concat("10s, ");
+						}else if(age_ =="1"){
+							str_temp = str_temp.concat("20s, ");
+						}else if(age_ =="2"){
+							str_temp = str_temp.concat("30s, ");
+						}else if(age_ =="3"){
+							str_temp = str_temp.concat("40s, ");
+						}else if(age_ =="4"){
+							str_temp = str_temp.concat("50s, ");
+						}else if(age_ =="5"){
+							str_temp = str_temp.concat("60s more, ");
+						}
+						
+						if(nation_ == "1"){
+							str_temp = str_temp.concat("Japan, ");
+						}else if(nation_ == "2"){
+							str_temp = str_temp.concat("China, ");
+						}else if(nation_ == "3"){
+							str_temp = str_temp.concat("Hongkong, ");
+						}else if(nation_ == "4"){
+							str_temp = str_temp.concat("Singapore, ");
+						}else if(nation_ == "5"){
+							str_temp = str_temp.concat("Taiwan, ");
+						}else if(nation_ == "6"){
+							str_temp = str_temp.concat("Thailand, ");
+						}else if(nation_ == "7"){
+							str_temp = str_temp.concat("Malaysia, ");
+						}else if(nation_ == "8"){
+							str_temp = str_temp.concat("Australia, ");
+						}else if(nation_ == "9"){
+							str_temp = str_temp.concat("U.S.A, ");
+						}else if(nation_ == "10"){
+							str_temp = str_temp.concat("Canada, ");
+						}else if(nation_ == "11"){
+							str_temp = str_temp.concat("U.K, ");
+						}else if(nation_ == "12"){
+							str_temp = str_temp.concat("Germany, ");
+						}else if(nation_ == "13"){
+							str_temp = str_temp.concat("France, ");
+						}else if(nation_ == "14"){
+							str_temp = str_temp.concat("Russia, ");
+						}else if(nation_ == "15"){
+							str_temp = str_temp.concat("the Mideast, ");
+						}else if(nation_ == "16"){
+							str_temp = str_temp.concat("India, ");
+						}else if(nation_ == "97"){
+							str_temp = str_temp.concat("the Others, ");
+						}
+						
+						if(job_ == "1"){
+							str_temp = str_temp.concat("Civil servant / Soldier, ");
+						}else if(job_ == "2"){
+							str_temp = str_temp.concat("Businessman / Manager, ");
+						}else if(job_ == "3"){
+							str_temp = str_temp.concat("Office job / Technical post, ");
+						}else if(job_ == "4"){
+							str_temp = str_temp.concat("Sales / Service, ");
+						}else if(job_ == "5"){
+							str_temp = str_temp.concat("Specialized job, ");
+						}else if(job_ == "6"){
+							str_temp = str_temp.concat("Production employee / Simple labor, ");
+						}else if(job_ == "7"){
+							str_temp = str_temp.concat("Owner-operator, ");
+						}else if(job_ == "8"){
+							str_temp = str_temp.concat("Student, ");
+						}else if(job_ == "9"){
+							str_temp = str_temp.concat("Housewife, ");
+						}else if(job_ == "10"){
+							str_temp = str_temp.concat("Retiree, ");
+						}else if(job_ == "11"){
+							str_temp = str_temp.concat("Inoccupation, ");
+						}else if(job_ == "12"){
+							str_temp = str_temp.concat("the Others, ");
+						}
+					
+						if(with_ == "1"){
+							str_temp = str_temp.concat("Solo, ");
+						}else if(with_ == "2"){
+							str_temp = str_temp.concat("Family / Relative, ");
+						}else if(with_ == "3"){
+							str_temp = str_temp.concat("Friend / Couple, ");
+						}else if(with_ == "4"){
+							str_temp = str_temp.concat("Colleague, ");
+						}else if(with_ == "5"){
+							str_temp = str_temp.concat("the Others, ");
+						}
+						
+						if(purpose_ == "1"){
+							str_temp = str_temp.concat("Leisure, Amusement & Individual vacation, ");
+						}else if(purpose_ == "2"){
+							str_temp = str_temp.concat("Beauty, Health & Therapy, ");
+						}else if(purpose_ == "3"){
+							str_temp = str_temp.concat("Religion and pilgrimage, ");
+						}else if(purpose_ == "4"){
+							str_temp = str_temp.concat("Shopping, ");
+						}else if(purpose_ == "5"){
+							str_temp = str_temp.concat("Visit friends and relatives, ");
+						}else if(purpose_ == "6"){
+							str_temp = str_temp.concat("Business or professional activity, ");
+						}else if(purpose_ == "7"){
+							str_temp = str_temp.concat("Education, ");
+						}
+						
+						if(month_ == "1"){
+							str_temp = str_temp.concat("January, ");
+						}else if(month_ == "2"){
+							str_temp = str_temp.concat("Febuary, ");
+						}else if(month_ == "3"){
+							str_temp = str_temp.concat("March, ");
+						}else if(month_ == "4"){
+							str_temp = str_temp.concat("April, ");
+						}else if(month_ == "5"){
+							str_temp = str_temp.concat("May, ");
+						}else if(month_ == "6"){
+							str_temp = str_temp.concat("June, ");
+						}else if(month_ == "7"){
+							str_temp = str_temp.concat("July, ");
+						}else if(month_ == "8"){
+							str_temp = str_temp.concat("August, ");
+						}else if(month_ == "9"){
+							str_temp = str_temp.concat("September, ");
+						}else if(month_ == "10"){
+							str_temp = str_temp.concat("October, ");
+						}else if(month_ == "11"){
+							str_temp = str_temp.concat("November, ");
+						}else if(month_ == "12"){
+							str_temp = str_temp.concat("December, ");
+						}
+						
+						
+						str_temp = str_temp.substring(0, str_temp.length-2);
+						$("#person_title").text(str_temp);
 						
 						var position1;
 						var	position2;
@@ -524,7 +682,7 @@
 																+ '    <div class="info">'
 																+ '        <div class="title">'
 																+ position2.title
-																+ '            <div class="close" onclick="closeOverlay()" title="닫기"></div>'
+																+ '            <div class="close" onclick="closeOverlay2()" title="닫기"></div>'
 																+ '        </div>'
 																+ '        <div class="body">'
 																+ '            <div class="img">'
@@ -554,7 +712,7 @@
 														
 														overlay.setMap(null);
 
-														closeOverlay = function closeOverlay() {
+														closeOverlay2 = function closeOverlay2() {
 															overlay.setMap(null);
 														}
 														
@@ -843,7 +1001,8 @@
 					</script>
 		</div>
 		</div>
-
+		</div>
+		</div>
 
 		</div>
 		<!--  Input Fade -->
