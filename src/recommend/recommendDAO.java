@@ -17,12 +17,11 @@ public class recommendDAO extends connectionDAO{
 		ResultSet rs = null;
 
 		try {
-			pstm = conn.prepareStatement("select name, address from TOURSPOT order by ID");
+			pstm = conn.prepareStatement("select * from TOURSPOT order by ID");
 			rs = pstm.executeQuery();
 			for(int i= 1; i<136; i++) {
 				rs.next();
-				tour.add(new tourVO(i, rs.getString(1), rs.getString(2)));
-				
+				tour.add(new tourVO(i, rs.getString("NAME"), rs.getString("ADDRESS"), rs.getString("IMG_1")));
 			}
 					
 		} catch(Exception e) {

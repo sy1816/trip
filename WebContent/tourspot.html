@@ -702,6 +702,15 @@
 			}, 1000, 'easeInOutExpo');
 			event.preventDefault();
 		});
+		
+		$(document).on("click", "tr", function() {
+			if($(this).data("href") != undefined){
+		        document.location = $(this).data('href');
+//		        console.log($(this).data('href'));
+			}
+	        return false;
+	 });
+
 	</script>
 
 
