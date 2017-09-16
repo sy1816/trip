@@ -5,6 +5,7 @@
 <%
 	String json;
 	String data = request.getParameter("id");
+	String type = request.getParameter("type");
 	
 	searchDAO sDAO = new searchDAO();
 	

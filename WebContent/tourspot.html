@@ -49,51 +49,204 @@
 		}
 		return sval;
 	}
-	
 
-	
 	var id_;
 	id_ = getParam("id");
-	
+
 	var json_data;
-	
+
 	// Print_Info Method
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		var table_template = "<tr data-href='_SITE'><td>_RANK</td><td>_NAME</td><td>_AREA</td><td>_ADDRESS</td></tr>";
-		var s = "";
-		var str = "";
-		
-		$.ajax({
-			url : "search.jsp",
-			type : "GET",
-			data : {id : id_},
-			success : function(data) {
-				json_data = JSON.parse(data);
+						var table_template = "<tr data-href='_SITE'><td>_NAME</td><td>_AREA</td><td>_ADDRESS</td></tr>";
+						var s = "";
+						
+						var id_temp;
 
-		   		$("#tourspot_title").append(json_data.tourspot);
-				$("#img_1").attr("src", json_data.image_url1);
-				$("#img_2").attr("src", json_data.image_url2);
-				// 여기까지가 관광지 개요 정보
-				
-				// 이후부터 관광지 통계 정보
-				pieChart();
-			}
-		});
-	});
-	
+						$.ajax({
+									url : "search.jsp",
+									type : "GET",
+									data : {
+										id : id_
+									},
+									success : function(data) {
+										json_data = JSON.parse(data);
+
+										$("#tourspot_title").append(
+												json_data.tourspot);
+										$("#img_1").attr("src", json_data.image_url1);
+										$("#img_2").attr("src", json_data.image_url2);
+										// 여기까지가 장바구니 관광지
+										
+										if(json_data.associate_1 != 0){
+											$.ajax({
+												url : "search.jsp",
+												type : "GET",
+												data : {
+													id : json_data.associate_1									
+												},
+												success : function(data){
+													var json_temp;
+													var str = "";
+													json_temp = JSON.parse(data);
+													
+										   			s = table_template;
+										   			result_url = "tourspot.html?id=" + json_temp.id;
+										   			s = s.replace("_SITE", result_url);
+										   			s = s.replace("_NAME", json_temp.tourspot);
+										   			s = s.replace("_AREA", json_temp.area);
+										   			s = s.replace("_ADDRESS", json_temp.address);
+										   			str += s;
+										   			
+											   		$("#table_body").empty;			
+											   		$("#table_body").append(str);
+												}
+											});
+										}
+										
+
+										if(json_data.associate_2 != 0){
+											$.ajax({
+												url : "search.jsp",
+												type : "GET",
+												data : {
+													id : json_data.associate_2									
+												},
+												success : function(data){
+													var json_temp;
+													var str = "";
+													json_temp = JSON.parse(data);
+													
+										   			s = table_template;
+										   			result_url = "tourspot.html?id=" + json_temp.id;
+										   			s = s.replace("_SITE", result_url);
+										   			s = s.replace("_NAME", json_temp.tourspot);
+										   			s = s.replace("_AREA", json_temp.area);
+										   			s = s.replace("_ADDRESS", json_temp.address);
+										   			str += s;
+										   			
+											   		$("#table_body").empty;			
+											   		$("#table_body").append(str);
+												}
+											});
+										}
+										
+
+										if(json_data.associate_3 != 0){
+											$.ajax({
+												url : "search.jsp",
+												type : "GET",
+												data : {
+													id : json_data.associate_3									
+												},
+												success : function(data){
+													var json_temp;
+													var str = "";
+													json_temp = JSON.parse(data);
+													
+										   			s = table_template;
+										   			result_url = "tourspot.html?id=" + json_temp.id;
+										   			s = s.replace("_SITE", result_url);
+										   			s = s.replace("_NAME", json_temp.tourspot);
+										   			s = s.replace("_AREA", json_temp.area);
+										   			s = s.replace("_ADDRESS", json_temp.address);
+										   			str += s;
+										   			
+											   		$("#table_body").append(str);
+												}
+											});
+										}
+										
+
+										if(json_data.associate_4 != 0){
+											$.ajax({
+												url : "search.jsp",
+												type : "GET",
+												data : {
+													id : json_data.associate_4									
+												},
+												success : function(data){
+													var json_temp;
+													var str = "";
+													json_temp = JSON.parse(data);
+													
+										   			s = table_template;
+										   			result_url = "tourspot.html?id=" + json_temp.id;
+										   			s = s.replace("_SITE", result_url);
+										   			s = s.replace("_NAME", json_temp.tourspot);
+										   			s = s.replace("_AREA", json_temp.area);
+										   			s = s.replace("_ADDRESS", json_temp.address);
+										   			str += s;
+										   			
+											   		$("#table_body").append(str);
+												}
+											});
+										}
+										
+
+										if(json_data.associate_5 != 0){
+											$.ajax({
+												url : "search.jsp",
+												type : "GET",
+												data : {
+													id : json_data.associate_5									
+												},
+												success : function(data){
+													var json_temp;
+													var str = "";
+													json_temp = JSON.parse(data);
+													
+										   			s = table_template;
+										   			result_url = "tourspot.html?id=" + json_temp.id;
+										   			s = s.replace("_SITE", result_url);
+										   			s = s.replace("_NAME", json_temp.tourspot);
+										   			s = s.replace("_AREA", json_temp.area);
+										   			s = s.replace("_ADDRESS", json_temp.address);
+										   			str += s;
+										   			
+											   		$("#table_body").append(str);
+												}
+											});
+										}
+										
+
+										
+										
+										// 이후부터 관광지 통계 정보
+									}
+								});
+						
+						
+						
+						
+					});
 </script>
 
 </head>
 
 <body id="page-top">
 
+	<div
+		class="tagline-upper text-center text-heading text-shadow text-white mt-4 d-none d-lg-block">
+		<red>TOUR</red>
+		for Korea
+	</div>
+	<div
+		class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-4 d-none d-lg-block">
+		<red>T</red>
+		rip
+		<red>O</red>
+		n
+		<red>U</red>
+		ser-adapted
+		<red>R</red>
+		ecommendations
+	</div>
 
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-4 d-none d-lg-block"><red>TOUR</red> for Korea</div>
-    <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-4 d-none d-lg-block"><red>T</red>rip <red>O</red>n <red>U</red>ser-adapted <red>R</red>ecommendations</div>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-3">
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-3">
 		<div class="container">
 			<a
 				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
@@ -178,7 +331,7 @@
 						<div class="card-body">
 							<canvas id="myPieChart" width="100%" height="100"></canvas>
 						</div>
-						<div class="card-body py-2 small  text-center" >
+						<div class="card-body py-2 small  text-center">
 							<hr class="mt-0 mb-3">
 
 							<!--  Button -->
@@ -189,13 +342,14 @@
 									data-toggle="dropdown" id="button1">
 									Type <span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu" role="menu" style = "text-align : center;">
-									<li><a href="#">Gender</a></li>
-									<li><a href="#">Month</a></li>
-									<li><a href="#">Nation</a></li>
-									<li><a href="#">Purpose</a></li>
-									<li><a href="#">With</a></li>
-									<li><a href="#">Job</a></li>
+								<ul class="dropdown-menu" role="menu"
+									style="text-align: center;">
+									<li><a>Gender</a></li>
+									<li><a>Month</a></li>
+									<li><a>Nation</a></li>
+									<li><a>Purpose</a></li>
+									<li><a>With</a></li>
+									<li><a>Job</a></li>
 								</ul>
 							</div>
 
@@ -221,14 +375,14 @@
 									<canvas id="myBarChart" width="100" height="100"></canvas>
 								</div>
 								<div class="col-sm-4 text-center my-auto">
-									<div class="h4 mb-0 text-primary">$34,693</div>
-									<div class="small text-muted">YTD Revenue</div>
+									<div class="h4 mb-0 text-primary" id = "sum_text">$34,693</div>
+									<div class="small text-muted">All Visitors</div>
 									<hr>
-									<div class="h4 mb-0 text-warning">$18,474</div>
-									<div class="small text-muted">YTD Expenses</div>
+									<div class="h4 mb-0 text-warning" id = "max_text">$18,474</div>
+									<div class="small text-muted">Maximum 1 month Visitors</div>
 									<hr>
-									<div class="h4 mb-0 text-success">$16,219</div>
-									<div class="small text-muted">YTD Margin</div>
+									<div class="h4 mb-0 text-success" id = "avg_text">$16,219</div>
+									<div class="small text-muted">Average Visitors</div>
 								</div>
 							</div>
 						</div>
@@ -251,10 +405,11 @@
 		<div class="bg-faded p-4 my-4">
 			<hr class="divider">
 			<h2 class="text-center text-lg text-uppercase my-0">
-				Favorite <strong>Tour Spot</strong>
+				Associated <strong>Tour Spot</strong>
 			</h2>
 			<hr class="divider">
 
+<!--  -->
 			<div class="table-responsive">
 				<table class="table table-bordered table-hover text-center"
 					width="100%" cellspacing="0">
@@ -266,124 +421,9 @@
 						</tr>
 					</thead>
 					<tbody id="table_body">
-						<tr>
-							<td>장소#1</td>
-							<td>지역#1</td>
-							<td>주소#1</td>
-						</tr>
-						<tr>
-							<td>장소#2</td>
-							<td>지역#2</td>
-							<td>주소#2</td>
-						</tr>
-						<tr>
-							<td>장소#3</td>
-							<td>지역#3</td>
-							<td>주소#3</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
-
-
-
-
-		</div>
-
-		<!--  그림 정보 -->
-		<div class="bg-faded p-4 my-4">
-			<hr class="divider">
-			<h2 class="text-center text-lg text-uppercase my-0">
-				Favorite <strong>Tour Spot</strong>
-			</h2>
-			<hr class="divider">
-			<div class="row  pb-4">
-				<div class="col-md-3 mb-3 mb-md-0">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 mb-3 mb-md-0">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--  row  end -->
-
-			<div class="row pb-4">
-				<div class="col-md-3 mb-3 mb-md-0">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 mb-3 mb-md-0">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card h-100">
-						<img class="card-img-top" src="http://placehold.it/750x450" alt="">
-						<div class="card-body text-center">
-							<h4 class="card-title m-0">
-								John Smith <small class="text-muted">Job Title</small>
-							</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--  row  end -->
 
 		</div>
 
@@ -402,175 +442,267 @@
 	</footer>
 
 	<script type="text/javascript">
-	// -- Pie Chart Example
-	// 파이 차트 만드는 함수
-	
-	var stastic_json;
-	
-	$(document).ready(function(){
-		
-		$.ajax({
-			url : "stastic.jsp",
-			type : "GET",
-			data : {id : id_},
-			success : function(data) {
-				stastic_json = JSON.parse(data);
-				  firstpieChart();
-				  $(this).parents('.btn-group').find('.dropdown-toggle').html("Gender"+' <span class="caret"></span>');
-			}
-		});
-		
-		$(".dropdown-menu li a").click(function(){
-			  var selText = $(this).text();
-			  console.log(selText);
-			  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-			  pieChart(selText);
-			});
-	});
-	
-	var myPieChart = null;
-	var CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
-	
-	function firstpieChart(){
-		
-		var ctx = document.getElementById("myPieChart");
+		// -- Pie Chart Example
+		// 파이 차트 만드는 함수
 
-		data_temp = stastic_json.gender_c;
-		labels_temp = ["Man", "Woman"];
+		var stastic_json;
 
-		myPieChart = new Chart(ctx, {
-			  type: 'pie',
-			  data: {
-			    labels: labels_temp,
-			    datasets: [{
-			      data: data_temp,
-			      backgroundColor: CSS_COLOR_NAMES,
-			    }],
-			  },
-			});		
-	}
-		
-	function pieChart(category){
-		var data_temp;
-		var color_temp;
-		var labels_temp;
+		$(document)
+				.ready(
+						function() {
 
-		if(category=="Gender"){
+							$
+									.ajax({
+										url : "stastic.jsp",
+										type : "GET",
+										data : {
+											id : id_
+										},
+										success : function(data) {
+											stastic_json = JSON.parse(data);
+											firstpieChart();
+											barChart();
+											$(this)
+													.parents('.btn-group')
+													.find('.dropdown-toggle')
+													.html(
+															"Gender"
+																	+ ' <span class="caret"></span>');
+										}
+									});
+
+							$(".dropdown-menu li a")
+									.click(
+											function() {
+												var selText = $(this).text();
+												console.log(selText);
+												$(this)
+														.parents('.btn-group')
+														.find(
+																'.dropdown-toggle')
+														.html(
+																selText
+																		+ ' <span class="caret"></span>');
+												pieChart(selText);
+											});
+						});
+
+		var myPieChart = null;
+		var CSS_COLOR_NAMES = [ "AliceBlue", "AntiqueWhite", "Aqua",
+				"Aquamarine", "Azure", "Beige", "Bisque", "Black",
+				"BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood",
+				"CadetBlue", "Chartreuse", "Chocolate", "Coral",
+				"CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue",
+				"DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey",
+				"DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen",
+				"Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon",
+				"DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray",
+				"DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink",
+				"DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick",
+				"FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro",
+				"GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green",
+				"GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo",
+				"Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen",
+				"LemonChiffon", "LightBlue", "LightCoral", "LightCyan",
+				"LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen",
+				"LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue",
+				"LightSlateGray", "LightSlateGrey", "LightSteelBlue",
+				"LightYellow", "Lime", "LimeGreen", "Linen", "Magenta",
+				"Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid",
+				"MediumPurple", "MediumSeaGreen", "MediumSlateBlue",
+				"MediumSpringGreen", "MediumTurquoise", "MediumVioletRed",
+				"MidnightBlue", "MintCream", "MistyRose", "Moccasin",
+				"NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab",
+				"Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen",
+				"PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff",
+				"Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red",
+				"RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon",
+				"SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver",
+				"SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow",
+				"SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato",
+				"Turquoise", "Violet", "Wheat", "White", "WhiteSmoke",
+				"Yellow", "YellowGreen" ];
+
+		function firstpieChart() {
+			var data_temp;
+			var labels_temp;
+
+			var ctx = document.getElementById("myPieChart");
+
 			data_temp = stastic_json.gender_c;
-			labels_temp = ["Man", "Woman"];
-		} else if(category=="Month"){
-			data_temp = stastic_json.month_c;
-			labels_temp = ["January", "Febuary", "March", "April","May","June","July","August","September","October","November","December",];
-		} else if(category=="Nation"){
-			data_temp = stastic_json.nation_c;
-			labels_temp = ["Japan", "China", "Hongkong", "Singapore","Taiwan","Thailand","Malaysia","Australia","U.S.A","Canada","U.K","Germany", "France", "Russia", "the Mideast", "India"];
-		} else if(category=="Job"){
-			data_temp = stastic_json.category_c;
-			labels_temp = ["Civil servant / Soldier", "Businessman / Manager", "Office job / Technical post", "Sales / Service","Specialized job","Production employee / Simple labor","Owner-operator", "Student", "Housewife", "Retiree", "Inoccupation", "the Others"];
-		} else if(category=="Month"){
-			data_temp = stastic_json.month_c;
-			labels_temp = ["January", "Febuary", "March", "April","May","June","July","August","September","October","November","December",];
-		}
-		
-		var ctx = document.getElementById("myPieChart");
-		
-		if(myPieChart != null){
-			myPieChart.destroy();
-		}
-		
-		myPieChart = new Chart(ctx, {
-		  type: 'pie',
-		  data: {
-		    labels: labels_temp,
-		    datasets: [{
-		      data: data_temp,
-		      backgroundColor: CSS_COLOR_NAMES,
-		    }],
-		  },
-		});
+			labels_temp = [ "Man", "Woman" ];
 
-/* 		var myPieChart = new Chart(ctx, {
-			  type: 'pie',
-			  data: {
-			    labels: ["Blue", "Red", "Yellow", "Green", "DREAM", "FALSE"],
-			    datasets: [{
-			      data: data_temp,
-			      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
-			    }],
-			  },
+			myPieChart = new Chart(ctx, {
+				type : 'pie',
+				data : {
+					labels : labels_temp,
+					datasets : [ {
+						data : data_temp,
+						backgroundColor : CSS_COLOR_NAMES,
+					} ],
+				},
 			});
- */	
-	
-	}
-		
+		}
 
-	// -- Bar Chart Example
-	var ctx = document.getElementById("myBarChart");
-	var myLineChart = new Chart(ctx, {
-	  type: 'bar',
-	  data: {
-	    labels: ["January", "February", "March", "April", "May", "June", "July"],
-	    datasets: [{
-	      label: "Revenue",
-	      backgroundColor: "rgba(2,117,216,1)",
-	      borderColor: "rgba(2,117,216,1)",
-	      data: [4215, 5312, 6251, 7841, 9821, 4984, 3324],
-	    }],
-	  },
-	  options: {
-	    scales: {
-	      xAxes: [{
-	        time: {
-	          unit: 'month'
-	        },
-	        gridLines: {
-	          display: false
-	        },
-	        ticks: {
-	          maxTicksLimit: 6
-	        }
-	      }],
-	      yAxes: [{
-	        ticks: {
-	          min: 0,
-	          max: 15000,
-	          maxTicksLimit: 5
-	        },
-	        gridLines: {
-	          display: true
-	        }
-	      }],
-	    },
-	    legend: {
-	      display: false
-	    }
-	  }
-	});
-	
+		function pieChart(category) {
+			var data_temp;
+			var color_temp;
+			var labels_temp;
+
+			if (category == "Gender") {
+				data_temp = stastic_json.gender_c;
+				labels_temp = [ "Man", "Woman" ];
+			} else if (category == "Month") {
+				data_temp = stastic_json.month_c;
+				labels_temp = [ "January", "Febuary", "March", "April", "May",
+						"June", "July", "August", "September", "October",
+						"November", "December", ];
+			} else if (category == "Nation") {
+				data_temp = stastic_json.nation_c;
+				labels_temp = [ "Japan", "China", "Hongkong", "Singapore",
+						"Taiwan", "Thailand", "Malaysia", "Australia", "U.S.A",
+						"Canada", "U.K", "Germany", "France", "Russia",
+						"the Mideast", "India" ];
+			} else if (category == "Job") {
+				data_temp = stastic_json.job_c;
+				labels_temp = [ "Civil servant / Soldier",
+						"Businessman / Manager", "Office job / Technical post",
+						"Sales / Service", "Specialized job",
+						"Production employee / Simple labor", "Owner-operator",
+						"Student", "Housewife", "Retiree", "Inoccupation",
+						"the Others" ];
+			} else if (category == "Purpose") {
+				data_temp = stastic_json.purpose_c;
+				labels_temp = [ "Leisure, Amusement & Individual vacation",
+						"Beauty, Health & Therapy", "Religion and pilgrimage",
+						"Shopping", "Visit friends and relatives",
+						"Business or professional activity", "Education" ];
+			} else if (category == "With") {
+				data_temp = stastic_json.with_c;
+				labels_temp = [ "Solo", "Family / Relative", "Friend / Couple",
+						"Colleague", "the Others" ];
+			}
+
+			var ctx = document.getElementById("myPieChart");
+
+			if (myPieChart != null) {
+				myPieChart.destroy();
+			}
+
+			myPieChart = new Chart(ctx, {
+				type : 'pie',
+				data : {
+					labels : labels_temp,
+					datasets : [ {
+						data : data_temp,
+						backgroundColor : CSS_COLOR_NAMES,
+					} ],
+				},
+			});
+
+			/* 		var myPieChart = new Chart(ctx, {
+			 type: 'pie',
+			 data: {
+			 labels: ["Blue", "Red", "Yellow", "Green", "DREAM", "FALSE"],
+			 datasets: [{
+			 data: data_temp,
+			 backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+			 }],
+			 },
+			 });
+			 */
+
+		}
+
+		// -- Bar Chart Example
+		function barChart() {
+			var data_temp = stastic_json.month_c;
+			var sum = 0;
+			var avg;
+			var max = 0;
+			
+			data_temp.forEach(function(item, index){
+				sum += item;
+				if(max < item)
+					max = item;
+			});
+			
+			avg = sum / 12.0;
+			
+			
+			$(document).ready(function(){
+				$("#sum_text").text(sum);
+				$("#max_text").text(max);
+				$("#avg_text").text(avg.toFixed(0));
+				console.log(sum);
+			});
+			
+			var ctx = document.getElementById("myBarChart");
+			var myLineChart = new Chart(ctx, {
+				type : 'bar',
+				data : {
+					labels : [ "January", "February", "March", "April", "May",
+							"June", "July", "August", "September", "October",
+							"November", "December" ],
+					datasets : [ {
+						label : "Count",
+						backgroundColor : "rgba(2,117,216,1)",
+						borderColor : "rgba(2,117,216,1)",
+						data : data_temp,
+					} ],
+				},
+				options : {
+					scales : {
+						xAxes : [ {
+							time : {
+								unit : 'month'
+							},
+							gridLines : {
+								display : false
+							},
+							ticks : {
+								maxTicksLimit : 6
+							}
+						} ],
+						yAxes : [ {
+							ticks : {
+								min : 0,
+//								max : auto,
+								maxTicksLimit : 5
+							},
+							gridLines : {
+								display : true
+							}
+						} ],
+					},
+					legend : {
+						display : false
+					}
+				}
+			});
+		}
+		
 	</script>
 
 	<script type="text/javascript">
-$(document).scroll(function() {
-    var scrollDistance = $(this).scrollTop();
-    if (scrollDistance > 100) {
-      $('.scroll-to-top').fadeIn();
-    } else {
-      $('.scroll-to-top').fadeOut();
-    }
-  });
+		$(document).scroll(function() {
+			var scrollDistance = $(this).scrollTop();
+			if (scrollDistance > 100) {
+				$('.scroll-to-top').fadeIn();
+			} else {
+				$('.scroll-to-top').fadeOut();
+			}
+		});
 
-
-// Smooth scrolling using jQuery easing
-$(document).on('click', 'a.scroll-to-top', function(event) {
-  var $anchor = $(this);
-  $('html, body').stop().animate({
-    scrollTop: ($($anchor.attr('href')).offset().top)
-  }, 1000, 'easeInOutExpo');
-  event.preventDefault();
-});
-
-  
-</script>
+		// Smooth scrolling using jQuery easing
+		$(document).on('click', 'a.scroll-to-top', function(event) {
+			var $anchor = $(this);
+			$('html, body').stop().animate({
+				scrollTop : ($($anchor.attr('href')).offset().top)
+			}, 1000, 'easeInOutExpo');
+			event.preventDefault();
+		});
+	</script>
 
 
 </body>

@@ -22,6 +22,22 @@ public class searchDAO extends connectionDAO {
 			tourspot_VO = new searchVO(rs.getInt("ID"), rs.getInt("V_RANK"), rs.getString("NAME"),
 					rs.getString("AREA"), rs.getString("ADDRESS"), rs.getString("IMG_1"), rs.getString("IMG_2"));
 			
+			if(rs.getString("ASSOCIATE_1") != null) {
+				tourspot_VO.setAssociate_1(Integer.parseInt(rs.getString("ASSOCIATE_1")));
+			}
+			if(rs.getString("ASSOCIATE_2") != null) {
+				tourspot_VO.setAssociate_2(Integer.parseInt(rs.getString("ASSOCIATE_2")));
+			}
+			if(rs.getString("ASSOCIATE_3") != null) {
+				tourspot_VO.setAssociate_3(Integer.parseInt(rs.getString("ASSOCIATE_3")));
+			}
+			if(rs.getString("ASSOCIATE_4") != null) {
+				tourspot_VO.setAssociate_4(Integer.parseInt(rs.getString("ASSOCIATE_4")));
+			}
+			if(rs.getString("ASSOCIATE_5") != null) {
+				tourspot_VO.setAssociate_5(Integer.parseInt(rs.getString("ASSOCIATE_5")));
+			}
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -89,7 +105,7 @@ public class searchDAO extends connectionDAO {
 
 			for (int i = 0; i < 40; i++) {
 				rs.next();
-				System.out.println(rs.getString("NAME") + " : " + rs.getString("IMG_1"));
+				System.out.println(rs.getString("NAME") + " : " + rs.getString("ASSOCIATE_5"));
 			}
 
 		} catch (Exception e) {
