@@ -1123,7 +1123,7 @@
 							<div id="map" style="width: 100%; height: 400px;"></div>
 							<br>
 							<p>
-				<div class = "btn-group-vertical">
+				<!-- <div class = "btn-group-vertical">
 								<button pb-5 class="btn btn-default btn-light"
 									onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
 								<button class="btn btn-default  btn-light"
@@ -1132,8 +1132,8 @@
 									onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
 								<button class="btn btn-default  btn-light"
 									onclick="setOverlayMapTypeId('use_district')">지적편집도 보기</button>
-								<!-- <button onclik ="setBounds()">여행지 범위</button> -->
-								</div>
+								<button onclik ="setBounds()">여행지 범위</button>
+								</div> -->
 							</p>
 
 
@@ -1209,40 +1209,8 @@
 						});
 
 		var myPieChart = null;
-		var CSS_COLOR_NAMES = [ "AliceBlue", "AntiqueWhite", "Aqua",
-				"Aquamarine", "Azure", "Beige", "Bisque", "Black",
-				"BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood",
-				"CadetBlue", "Chartreuse", "Chocolate", "Coral",
-				"CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue",
-				"DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey",
-				"DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen",
-				"Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon",
-				"DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray",
-				"DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink",
-				"DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick",
-				"FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro",
-				"GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green",
-				"GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo",
-				"Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen",
-				"LemonChiffon", "LightBlue", "LightCoral", "LightCyan",
-				"LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen",
-				"LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue",
-				"LightSlateGray", "LightSlateGrey", "LightSteelBlue",
-				"LightYellow", "Lime", "LimeGreen", "Linen", "Magenta",
-				"Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid",
-				"MediumPurple", "MediumSeaGreen", "MediumSlateBlue",
-				"MediumSpringGreen", "MediumTurquoise", "MediumVioletRed",
-				"MidnightBlue", "MintCream", "MistyRose", "Moccasin",
-				"NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab",
-				"Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen",
-				"PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff",
-				"Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red",
-				"RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon",
-				"SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver",
-				"SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow",
-				"SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato",
-				"Turquoise", "Violet", "Wheat", "White", "WhiteSmoke",
-				"Yellow", "YellowGreen" ];
+		var CSS_COLOR_NAMES = ["#49BEB7", "#FC345C", "#FF4081", "#E040FB", "#7C4DFF", "#536DFE", "#448AFF",
+			"#40C4FF", "#64FFDA", "#2E7D32", "#B2FF59", "#EEFF41", "#FFAB40", "#5D4037", "#1C2A48", "#616161"];
 
 		function firstpieChart() {
 			var data_temp;
@@ -1273,7 +1241,6 @@
 			if (category == "Gender") {
 				data_temp = stastic_json.gender_c;
 				labels_temp = [ "Man", "Woman" ];
-				CSS_COLOR_NAMES = [ "#49BEB7", "#FC345C" ];
 			} else if (category == "Month") {
 				data_temp = stastic_json.month_c;
 				labels_temp = [ "January", "Febuary", "March", "April", "May",
