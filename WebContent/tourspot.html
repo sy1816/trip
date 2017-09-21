@@ -486,36 +486,46 @@
 			//2.지도위에 마커 표시
 
 			//for 다중마커
+			if(json_1 != null){
 			position1 = {
 				title : json_1.tourspot,
 				addr : json_1.address,
 				image : json_1.img_url1,
 				id : json_1.id
 			};
+			}
+			if(json_2 != null){
 			position2 = {
 				title : json_2.tourspot,
 				addr : json_2.address,
 				image : json_2.img_url1,
 				id : json_2.id
 			};
+			}
+			if(json_3 != null){
 			position3 = {
 				title : json_3.tourspot,
 				addr : json_3.address,
 				image : json_3.img_url1,
 				id : json_3.id
 			};
+			}
+			if(json_4 != null){
 			position4 = {
 				title : json_4.tourspot,
 				addr : json_4.address,
 				image : json_4.img_url1,
 				id : json_4.id
 			};
+			}
+			if(json_5 != null){
 			position5 = {
 				title : json_5.tourspot,
 				addr : json_5.address,
 				image : json_5.img_url1,
 				id : json_5.id
 			};
+			}
 
 			var aaa, marker, imageSrc1 = 'img/m1.png', imageSrc2 = 'img/m2.png', imageSrc3 = 'img/m3.png', imageSrc4 = 'img/m4.png', imageSrc5 = 'img/m5.png', imageSize = new daum.maps.Size(
 					34, 39);
