@@ -169,7 +169,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-3">
 		<div class="container">
-        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="home3.html">Tour For Korea</a>
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="index.html">Tour For Korea</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -178,7 +178,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav mx-auto">
 					<li class="nav-item  px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="home3.html">Home
+						class="nav-link text-uppercase text-expanded" href="index.html">Home
 					</a></li>
 					<li class="nav-item px-lg-4"><a
 						class="nav-link text-uppercase text-expanded" href="search2.html">Search</a>
@@ -249,13 +249,15 @@
 			<div id="map" style="width: 100%; height: 400px;"></div>
 			<br>
 			<p>
-				<button pb-5 class="btn btn-default" onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
-				<button  class="btn btn-default" onclick="setOverlayMapTypeId('roadview')">로드뷰 도로정보
+			<div class = "btn-group-vertical">
+				<button pb-5 class="btn btn-default btn-light" onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
+				<button  class="btn btn-default btn-light" onclick="setOverlayMapTypeId('roadview')">로드뷰 도로정보
 					보기</button>
-				<br><button  class="btn btn-default" onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
-				<button  class="btn btn-default" onclick="setOverlayMapTypeId('use_district')">지적편집도
+				<button  class="btn btn-default btn-light" onclick="setOverlayMapTypeId('terrain')">지형정보 보기</button>
+				<button  class="btn btn-default btn-light" onclick="setOverlayMapTypeId('use_district')">지적편집도
 					보기</button>
 				<!-- <button onclik ="setBounds()">여행지 범위</button> -->
+				</div>
 			</p>
 
 
